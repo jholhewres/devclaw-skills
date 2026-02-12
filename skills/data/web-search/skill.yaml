@@ -1,0 +1,92 @@
+name: web-search
+version: 0.1.0
+author: goclaw
+description: |
+  Web search via Brave Search API or SearXNG.
+  Search the web for current information, news, and answers.
+category: data
+tags: [search, web, brave, searxng, news]
+
+requires:
+  any_env: [BRAVE_API_KEY, SEARXNG_URL]
+
+config:
+  type: object
+  properties:
+    provider:
+      type: string
+      description: "Search provider: brave or searxng"
+      default: "brave"
+    brave_api_key:
+      type: string
+      description: Brave Search API key
+    searxng_url:
+      type: string
+      description: SearXNG instance URL (e.g. http://localhost:8080)
+    default_count:
+      type: integer
+      default: 5
+      description: Default number of results
+    safe_search:
+      type: string
+      default: "moderate"
+      description: "Safe search level: off, moderate, strict"
+
+tools:
+  - name: search
+    description: Search the web for information
+    parameters:
+      query:
+        type: string
+        required: true
+        description: Search query
+      count:
+        type: integer
+        default: 5
+        description: Number of results (1-20)
+      freshness:
+        type: string
+        description: "Time filter: day, week, month, year"
+
+  - name: search_news
+    description: Search for recent news articles
+    parameters:
+      query:
+        type: string
+        required: true
+      count:
+        type: integer
+        default: 5
+      freshness:
+        type: string
+        default: "week"
+
+system_prompt: |
+  You can search the web for current information using the search tool.
+
+  ## search
+  - General web search. Returns title, URL, and snippet for each result.
+  - Use freshness to filter by time: day, week, month, year.
+  - Default 5 results; increase count for broader research.
+
+  ## search_news
+  - Focused on news articles. Defaults to past week.
+  - Use for current events, breaking news, recent developments.
+
+  Tips:
+  - Be specific in queries for better results.
+  - Use quotes for exact phrases.
+  - Combine with web-fetch to read full page content.
+
+triggers:
+  - "search"
+  - "search the web"
+  - "google"
+  - "look up"
+  - "find information"
+  - "what is"
+  - "news about"
+  - "latest news"
+  - "pesquisar"
+  - "buscar na web"
+  - "notícias"

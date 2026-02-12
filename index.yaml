@@ -1,16 +1,76 @@
 # GoClaw Skills Index
-# Índice global de todas as skills disponíveis para o AgentGo Copilot.
-version: "1.0"
+# Global index of all available skills for GoClaw Copilot.
+version: "1.1"
 updated: 2026-02-12
 
 skills:
-  # Produtividade
+  # ──────────────── Builtin ────────────────
+  weather:
+    path: skills/builtin/weather
+    version: 0.2.0
+    category: builtin
+    tags: [weather, forecast, temperature, wttr, open-meteo]
+    description: Weather information and forecasts (no API key required)
+
+  calculator:
+    path: skills/builtin/calculator
+    version: 0.1.0
+    category: builtin
+    tags: [math, calculator, conversion]
+    description: Mathematical calculations and conversions
+
+  # ──────────────── Data ────────────────
+  web-search:
+    path: skills/data/web-search
+    version: 0.1.0
+    category: data
+    tags: [search, web, brave, searxng, news]
+    description: Web search via Brave Search API or SearXNG
+    requires:
+      any_env: [BRAVE_API_KEY, SEARXNG_URL]
+
+  web-fetch:
+    path: skills/data/web-fetch
+    version: 0.1.0
+    category: data
+    tags: [web, fetch, scrape, readability, markdown]
+    description: Fetch URL content and extract readable text/markdown
+
+  summarize:
+    path: skills/data/summarize
+    version: 0.1.0
+    category: data
+    tags: [summarize, transcript, youtube, podcast, text-extraction]
+    description: Summarize URLs, videos, podcasts, and files
+    requires:
+      bins: [summarize]
+
+  # ──────────────── Development ────────────────
+  github:
+    path: skills/development/github
+    version: 0.2.0
+    category: development
+    tags: [github, git, issues, pull-requests, ci, releases]
+    description: Full GitHub integration via gh CLI
+    requires:
+      bins: [gh]
+
+  # ──────────────── Productivity ────────────────
   calendar:
     path: skills/productivity/calendar
     version: 0.1.0
     category: productivity
-    tags: [google, calendar, scheduling]
+    tags: [google, calendar, scheduling, events]
     description: Google Calendar integration
+
+  gog:
+    path: skills/productivity/gog
+    version: 0.1.0
+    category: productivity
+    tags: [google, gmail, calendar, drive, workspace, email]
+    description: Google Workspace (Gmail, Calendar, Drive) via gog CLI
+    requires:
+      bins: [gog]
 
   todoist:
     path: skills/productivity/todoist
@@ -19,41 +79,10 @@ skills:
     tags: [todoist, tasks, todo]
     description: Todoist task management
 
-  # Comunicação
+  # ──────────────── Communication ────────────────
   gmail:
     path: skills/communication/gmail
     version: 0.1.0
     category: communication
     tags: [google, email, gmail]
     description: Gmail email integration
-
-  # Desenvolvimento
-  github:
-    path: skills/development/github
-    version: 0.1.0
-    category: development
-    tags: [github, git, issues, pr]
-    description: GitHub repository integration
-
-  # Dados
-  websearch:
-    path: skills/data/websearch
-    version: 0.1.0
-    category: data
-    tags: [search, web, google]
-    description: Web search via APIs
-
-  # Utilidades (built-in)
-  weather:
-    path: skills/builtin/weather
-    version: 0.1.0
-    category: builtin
-    tags: [weather, forecast]
-    description: Weather information
-
-  calculator:
-    path: skills/builtin/calculator
-    version: 0.1.0
-    category: builtin
-    tags: [math, calculator]
-    description: Mathematical calculations

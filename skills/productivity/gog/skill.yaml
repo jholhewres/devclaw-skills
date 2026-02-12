@@ -1,0 +1,193 @@
+name: gog
+version: 0.1.0
+author: goclaw
+description: |
+  Google Workspace integration via gog CLI.
+  Access Gmail, Google Calendar, and Google Drive.
+category: productivity
+tags: [google, gmail, calendar, drive, workspace, email]
+
+requires:
+  bins: [gog]
+
+config:
+  type: object
+  properties:
+    default_account:
+      type: string
+      description: Default Google account email
+    calendar_id:
+      type: string
+      default: "primary"
+      description: Default calendar ID
+
+tools:
+  # --- Gmail ---
+  - name: gmail_list
+    description: List recent emails from Gmail
+    parameters:
+      query:
+        type: string
+        description: "Gmail search query (e.g. 'from:boss is:unread')"
+      limit:
+        type: integer
+        default: 10
+        description: Max emails to return
+
+  - name: gmail_read
+    description: Read a specific email by ID
+    parameters:
+      id:
+        type: string
+        required: true
+        description: Email ID
+
+  - name: gmail_send
+    description: Send an email
+    parameters:
+      to:
+        type: string
+        required: true
+        description: Recipient email address
+      subject:
+        type: string
+        required: true
+      body:
+        type: string
+        required: true
+      cc:
+        type: string
+        description: CC recipients (comma-separated)
+
+  - name: gmail_reply
+    description: Reply to an email
+    parameters:
+      id:
+        type: string
+        required: true
+        description: Email ID to reply to
+      body:
+        type: string
+        required: true
+
+  # --- Calendar ---
+  - name: calendar_list
+    description: List upcoming calendar events
+    parameters:
+      days:
+        type: integer
+        default: 7
+        description: Number of days to look ahead
+      calendar:
+        type: string
+        description: Calendar ID (default primary)
+
+  - name: calendar_create
+    description: Create a calendar event
+    parameters:
+      title:
+        type: string
+        required: true
+      start:
+        type: string
+        required: true
+        description: "Start time (ISO 8601 or natural language)"
+      duration:
+        type: string
+        default: "1h"
+        description: "Duration (e.g. 30m, 1h, 2h)"
+      description:
+        type: string
+      location:
+        type: string
+      attendees:
+        type: string
+        description: "Comma-separated email addresses"
+
+  - name: calendar_delete
+    description: Delete a calendar event
+    parameters:
+      id:
+        type: string
+        required: true
+        description: Event ID
+
+  # --- Drive ---
+  - name: drive_list
+    description: List files in Google Drive
+    parameters:
+      query:
+        type: string
+        description: "Search query (e.g. 'type:document name:report')"
+      folder:
+        type: string
+        description: Folder ID or path
+      limit:
+        type: integer
+        default: 20
+
+  - name: drive_download
+    description: Download a file from Google Drive
+    parameters:
+      id:
+        type: string
+        required: true
+        description: File ID
+      output:
+        type: string
+        description: Local output path
+
+  - name: drive_upload
+    description: Upload a file to Google Drive
+    parameters:
+      path:
+        type: string
+        required: true
+        description: Local file path
+      folder:
+        type: string
+        description: Target folder ID
+      name:
+        type: string
+        description: Override file name
+
+system_prompt: |
+  You have access to Google Workspace via the gog CLI.
+
+  ## Gmail
+  - gmail_list: list emails with optional search query.
+    Examples: "from:alice", "is:unread", "subject:report", "after:2024/01/01"
+  - gmail_read: read full email content by ID.
+  - gmail_send: compose and send a new email.
+  - gmail_reply: reply to an existing email thread.
+
+  ## Calendar
+  - calendar_list: upcoming events for the next N days.
+  - calendar_create: create events with title, time, duration, attendees.
+  - calendar_delete: remove events by ID.
+
+  ## Drive
+  - drive_list: search and list files.
+  - drive_download: download files to local storage.
+  - drive_upload: upload local files.
+
+  Important:
+  - Always confirm before sending emails or deleting events.
+  - Use search queries to narrow down results.
+  - For calendar, parse natural language times ("tomorrow at 3pm").
+
+triggers:
+  - "email"
+  - "gmail"
+  - "send email"
+  - "check email"
+  - "calendar"
+  - "schedule"
+  - "meeting"
+  - "google drive"
+  - "drive"
+  - "upload"
+  - "download"
+  - "minha agenda"
+  - "enviar email"
+  - "verificar emails"

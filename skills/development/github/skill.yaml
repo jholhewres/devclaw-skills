@@ -1,23 +1,26 @@
 name: github
-version: 0.1.0
+version: 0.2.0
 author: goclaw
-description: GitHub repository integration
+description: |
+  Interact with GitHub using the gh CLI.
+  Issues, pull requests, CI runs, releases, and advanced API queries.
 category: development
-tags: [github, git, issues, pull-requests, repositories]
+tags: [github, git, issues, pull-requests, repositories, ci, releases]
+
+requires:
+  bins: [gh]
 
 config:
   type: object
   properties:
-    token:
-      type: string
-      description: GitHub personal access token
     default_owner:
       type: string
       description: Default repository owner/org
 
 tools:
+  # --- Issues ---
   - name: list_issues
-    description: List open issues in a repository
+    description: List issues in a repository
     parameters:
       repo:
         type: string
@@ -26,6 +29,25 @@ tools:
       state:
         type: string
         default: "open"
+        description: "Filter by state: open, closed, all"
+      labels:
+        type: string
+        description: "Comma-separated labels to filter"
+      limit:
+        type: integer
+        default: 30
+        description: "Max results"
+
+  - name: get_issue
+    description: Get details of a specific issue
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+        description: "Issue number"
 
   - name: create_issue
     description: Create a new issue
@@ -38,7 +60,37 @@ tools:
         required: true
       body:
         type: string
+      labels:
+        type: string
+        description: "Comma-separated labels"
+      assignees:
+        type: string
+        description: "Comma-separated assignees"
 
+  - name: close_issue
+    description: Close an issue
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+
+  - name: comment_issue
+    description: Add a comment to an issue
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+      body:
+        type: string
+        required: true
+
+  # --- Pull Requests ---
   - name: list_prs
     description: List pull requests
     parameters:
@@ -48,15 +100,207 @@ tools:
       state:
         type: string
         default: "open"
+      limit:
+        type: integer
+        default: 30
+
+  - name: get_pr
+    description: Get details of a specific pull request
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+
+  - name: pr_diff
+    description: Get the diff of a pull request
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+
+  - name: pr_checks
+    description: Check CI status on a pull request
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+
+  - name: pr_merge
+    description: Merge a pull request
+    parameters:
+      repo:
+        type: string
+        required: true
+      number:
+        type: integer
+        required: true
+      method:
+        type: string
+        default: "merge"
+        description: "Merge method: merge, squash, rebase"
+
+  # --- CI/CD ---
+  - name: list_runs
+    description: List recent workflow runs
+    parameters:
+      repo:
+        type: string
+        required: true
+      workflow:
+        type: string
+        description: "Workflow name or filename"
+      limit:
+        type: integer
+        default: 10
+
+  - name: view_run
+    description: View details and logs of a workflow run
+    parameters:
+      repo:
+        type: string
+        required: true
+      run_id:
+        type: string
+        required: true
+      log:
+        type: boolean
+        default: false
+        description: "Include run logs"
+
+  - name: rerun_workflow
+    description: Re-run a failed workflow
+    parameters:
+      repo:
+        type: string
+        required: true
+      run_id:
+        type: string
+        required: true
+
+  # --- Releases ---
+  - name: list_releases
+    description: List releases
+    parameters:
+      repo:
+        type: string
+        required: true
+      limit:
+        type: integer
+        default: 10
+
+  - name: create_release
+    description: Create a new release
+    parameters:
+      repo:
+        type: string
+        required: true
+      tag:
+        type: string
+        required: true
+      title:
+        type: string
+        required: true
+      notes:
+        type: string
+      draft:
+        type: boolean
+        default: false
+      prerelease:
+        type: boolean
+        default: false
+
+  # --- API ---
+  - name: api
+    description: Make a raw GitHub API request via gh api
+    parameters:
+      endpoint:
+        type: string
+        required: true
+        description: "API endpoint (e.g. repos/{owner}/{repo}/commits)"
+      method:
+        type: string
+        default: "GET"
+      body:
+        type: string
+        description: "JSON body for POST/PATCH requests"
+
+  # --- Search ---
+  - name: search_repos
+    description: Search GitHub repositories
+    parameters:
+      query:
+        type: string
+        required: true
+      limit:
+        type: integer
+        default: 10
+
+  - name: search_code
+    description: Search code across GitHub
+    parameters:
+      query:
+        type: string
+        required: true
+      repo:
+        type: string
+        description: "Limit to a specific repo"
+      limit:
+        type: integer
+        default: 10
 
 system_prompt: |
-  You can interact with GitHub repositories.
-  Use list_issues to check open issues.
-  Use create_issue to create new issues.
-  Use list_prs to check pull requests.
+  You have full access to GitHub via the `gh` CLI.
+
+  ## Issues
+  - list_issues: list open/closed/all issues with optional label filter
+  - get_issue: get full details (body, comments, labels, assignees)
+  - create_issue: create with title, body, labels, assignees
+  - close_issue: close by number
+  - comment_issue: add a comment
+
+  ## Pull Requests
+  - list_prs: list open/closed/all PRs
+  - get_pr: full PR details (body, reviews, checks)
+  - pr_diff: see the code diff
+  - pr_checks: check CI status (pass/fail/pending)
+  - pr_merge: merge with method (merge/squash/rebase)
+
+  ## CI/CD
+  - list_runs: recent workflow runs, optionally filter by workflow
+  - view_run: details + logs of a specific run
+  - rerun_workflow: re-run a failed workflow
+
+  ## Releases
+  - list_releases: list recent releases
+  - create_release: create a new release with tag, title, notes
+
+  ## API & Search
+  - api: raw gh api calls for anything not covered
+  - search_repos: search repositories by query
+  - search_code: search code across repos
+
+  Always specify --repo owner/repo when needed.
+  For large outputs, use --limit to cap results.
+  Prefer structured JSON output with --json when possible.
 
 triggers:
-  - "github issues"
-  - "pull requests"
+  - "github"
+  - "issue"
+  - "pull request"
+  - "PR"
+  - "workflow"
+  - "CI"
+  - "release"
   - "create issue"
   - "check repo"
+  - "merge PR"
+  - "check CI"

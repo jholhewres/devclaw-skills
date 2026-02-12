@@ -1,0 +1,90 @@
+name: web-fetch
+version: 0.1.0
+author: goclaw
+description: |
+  Fetch URL content and extract readable text/markdown.
+  Useful for reading articles, documentation, and web pages.
+category: data
+tags: [web, fetch, scrape, readability, markdown]
+
+config:
+  type: object
+  properties:
+    timeout_seconds:
+      type: integer
+      default: 30
+      description: HTTP request timeout in seconds
+    max_body_bytes:
+      type: integer
+      default: 5242880
+      description: Max response body size (default 5MB)
+    user_agent:
+      type: string
+      default: "GoClaw/1.0"
+      description: User-Agent header
+
+tools:
+  - name: fetch
+    description: Fetch a URL and return its content as readable text
+    parameters:
+      url:
+        type: string
+        required: true
+        description: URL to fetch
+      format:
+        type: string
+        default: "text"
+        description: "Output format: text, markdown, html, raw"
+      selector:
+        type: string
+        description: "CSS selector to extract specific content (e.g. article, main, .content)"
+
+  - name: fetch_headers
+    description: Fetch only the HTTP headers of a URL (HEAD request)
+    parameters:
+      url:
+        type: string
+        required: true
+
+  - name: fetch_json
+    description: Fetch a URL that returns JSON and parse it
+    parameters:
+      url:
+        type: string
+        required: true
+      jq:
+        type: string
+        description: "JQ-like path to extract (e.g. .data.items[0].name)"
+
+system_prompt: |
+  You can fetch and read web page content with these tools:
+
+  ## fetch
+  - Fetches a URL and extracts readable text content.
+  - Default format is plain text (readability-extracted).
+  - Use format=markdown for structured output.
+  - Use format=html for raw HTML.
+  - Use selector to target specific page sections.
+
+  ## fetch_headers
+  - HEAD request only. Returns HTTP headers.
+  - Useful to check content-type, size, redirects.
+
+  ## fetch_json
+  - Fetches a JSON API endpoint and parses the response.
+  - Use jq parameter to extract nested fields.
+
+  Tips:
+  - Combine with web-search: search first, then fetch top results.
+  - For large pages, use selector to extract only relevant content.
+  - Respect robots.txt and rate limits.
+
+triggers:
+  - "fetch"
+  - "read this URL"
+  - "open this link"
+  - "what does this page say"
+  - "get content from"
+  - "scrape"
+  - "ler esta página"
+  - "abrir link"

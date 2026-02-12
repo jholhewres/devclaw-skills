@@ -1,0 +1,110 @@
+name: summarize
+version: 0.1.0
+author: goclaw
+description: |
+  Summarize or extract text/transcripts from URLs, podcasts, YouTube videos,
+  and local files. Wraps the summarize CLI tool.
+category: data
+tags: [summarize, transcript, youtube, podcast, text-extraction]
+
+requires:
+  bins: [summarize]
+
+config:
+  type: object
+  properties:
+    default_model:
+      type: string
+      description: "Default LLM model for summarization"
+    default_language:
+      type: string
+      default: "en"
+      description: "Default output language"
+
+tools:
+  - name: summarize_url
+    description: Summarize content from a URL (article, blog, documentation)
+    parameters:
+      url:
+        type: string
+        required: true
+        description: URL to summarize
+      language:
+        type: string
+        description: "Output language (e.g. en, pt, es)"
+      max_words:
+        type: integer
+        description: "Maximum words in summary"
+
+  - name: transcribe_url
+    description: Extract full transcript from a YouTube video or podcast URL
+    parameters:
+      url:
+        type: string
+        required: true
+        description: YouTube/podcast URL
+      language:
+        type: string
+        description: "Transcript language"
+
+  - name: summarize_file
+    description: Summarize a local file (text, PDF, etc.)
+    parameters:
+      path:
+        type: string
+        required: true
+        description: Path to the file
+      language:
+        type: string
+        description: "Output language"
+
+  - name: summarize_text
+    description: Summarize provided text content
+    parameters:
+      text:
+        type: string
+        required: true
+        description: Text content to summarize
+      language:
+        type: string
+        description: "Output language"
+      max_words:
+        type: integer
+        description: "Maximum words in summary"
+
+system_prompt: |
+  You can summarize content from various sources.
+
+  ## summarize_url
+  - Summarizes articles, blog posts, documentation pages.
+  - Works with most web URLs.
+  - Specify language for output in a different language.
+
+  ## transcribe_url
+  - Extracts full transcript from YouTube videos and podcasts.
+  - Great fallback when you need the actual content, not just a summary.
+  - Works with YouTube, Spotify podcast URLs, and audio file URLs.
+
+  ## summarize_file
+  - Summarizes local files: text, PDF, markdown, etc.
+
+  ## summarize_text
+  - Summarizes provided text directly (no URL or file needed).
+
+  Tips:
+  - For YouTube videos, try transcribe_url first for the raw transcript,
+    then summarize_text if the user wants a shorter version.
+  - Use max_words to control summary length.
+  - Combine with web-search to find and summarize relevant content.
+
+triggers:
+  - "summarize"
+  - "summary"
+  - "transcribe"
+  - "transcript"
+  - "what does this video say"
+  - "read and summarize"
+  - "tl;dr"
+  - "resumir"
+  - "resumo"
+  - "transcrever"

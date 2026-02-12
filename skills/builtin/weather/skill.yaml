@@ -1,50 +1,87 @@
 name: weather
-version: 0.1.0
+version: 0.2.0
 author: goclaw
-description: Weather information and forecasts
+description: |
+  Weather information and forecasts using free APIs (no API key required).
+  Supports wttr.in and Open-Meteo for current conditions and forecasts.
 category: builtin
-tags: [weather, forecast, temperature]
+tags: [weather, forecast, temperature, wttr, open-meteo]
 
 config:
   type: object
   properties:
-    api_key:
+    provider:
       type: string
-      description: OpenWeatherMap API key
+      default: "wttr"
+      description: "Weather provider: wttr (wttr.in) or openmeteo (Open-Meteo API)"
     default_city:
       type: string
       default: "São Paulo"
+      description: Default city for weather queries
+    units:
+      type: string
+      default: "metric"
+      description: "Unit system: metric or imperial"
+    language:
+      type: string
+      default: "en"
+      description: "Language for weather descriptions (e.g. en, pt, es)"
 
 tools:
   - name: get_weather
-    description: Get current weather for a city
+    description: Get current weather conditions for a location
     parameters:
-      city:
+      location:
         type: string
-        description: City name
         required: true
+        description: "City name, coordinates, or airport code"
 
   - name: get_forecast
-    description: Get weather forecast for next days
+    description: Get weather forecast for upcoming days
     parameters:
-      city:
+      location:
         type: string
-        description: City name
         required: true
+        description: "City name, coordinates, or airport code"
       days:
         type: integer
-        description: Number of days (1-7)
         default: 3
+        description: "Number of days (1-7)"
+
+  - name: get_moon
+    description: Get current moon phase
+    parameters:
+      location:
+        type: string
+        description: "Optional location for moon rise/set times"
 
 system_prompt: |
-  You can check weather and forecasts for any city.
-  Use get_weather for current conditions.
-  Use get_forecast for upcoming days.
+  You can check weather for any location worldwide. No API key needed.
+
+  ## get_weather
+  - Current conditions: temperature, humidity, wind, description.
+  - Accepts city names ("London"), coordinates ("48.8,2.3"), airport codes ("CDG").
+
+  ## get_forecast
+  - Multi-day forecast (1-7 days).
+  - Shows min/max temperature, precipitation chance, wind.
+
+  ## get_moon
+  - Current moon phase information.
+
+  Tips:
+  - If user doesn't specify a city, use the configured default.
+  - For weather in multiple cities, make separate calls.
+  - Combine with location context from conversation.
 
 triggers:
+  - "weather"
   - "what's the weather"
-  - "weather in"
-  - "will it rain"
   - "temperature"
+  - "will it rain"
+  - "forecast"
+  - "moon phase"
   - "previsão do tempo"
   - "vai chover"
+  - "clima em"
+  - "temperatura"
