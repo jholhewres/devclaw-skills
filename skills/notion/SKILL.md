@@ -133,5 +133,5 @@ curl -s -X PATCH "https://api.notion.com/v1/blocks/PAGE_ID/children" \
 
 ## Triggers
 
-notion, add to notion, notion page, notion database, notion task,
+notion, add to notion, notion page, notion database, notion task, create page, search notion,
 adicionar no notion, buscar no notion, criar página

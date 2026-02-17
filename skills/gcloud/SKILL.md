@@ -1,11 +1,11 @@
 ---
 name: gcloud
-description: "Google Cloud CLI para Compute, Cloud Run, GCS e BigQuery"
+description: "Google Cloud CLI for Compute, Cloud Run, GCS, and BigQuery"
 metadata: {"openclaw":{"always":false,"emoji":"🌐"}}
 ---
 # Google Cloud CLI
 
-Interface com serviços GCP via gcloud e gsutil.
+Manage Google Cloud services via gcloud and gsutil.
 
 ## Setup
 
@@ -36,10 +36,10 @@ Interface com serviços GCP via gcloud e gsutil.
 ## Compute Engine
 
 ```bash
-# Listar instâncias
+# List instances
 gcloud compute instances list
 
-# Detalhes
+# Details
 gcloud compute instances describe <name> --zone=<zone>
 
 # SSH
@@ -50,7 +50,7 @@ gcloud compute ssh <name> --zone=<zone> --command="<cmd>"
 gcloud compute instances start <name> --zone=<zone>
 gcloud compute instances stop <name> --zone=<zone>
 
-# SCP (transferir arquivos)
+# SCP (transfer files)
 gcloud compute scp <local> <name>:<remote> --zone=<zone>
 gcloud compute scp <name>:<remote> <local> --zone=<zone>
 
@@ -61,7 +61,7 @@ gcloud compute instances get-serial-port-output <name> --zone=<zone>
 ## Cloud Run
 
 ```bash
-# Listar services
+# List services
 gcloud run services list
 
 # Deploy
@@ -78,10 +78,10 @@ gcloud run services describe <service> --region=<region>
 ## Cloud Storage (gsutil)
 
 ```bash
-# Listar buckets
+# List buckets
 gsutil ls
 
-# Listar objetos
+# List objects
 gsutil ls gs://<bucket>/<prefix>/
 
 # Upload/Download
@@ -91,7 +91,7 @@ gsutil cp gs://<bucket>/<path> <file>
 # Sync
 gsutil -m rsync -r <dir> gs://<bucket>/<prefix>/
 
-# Remover
+# Remove
 gsutil rm gs://<bucket>/<path>
 gsutil rm -r gs://<bucket>/<prefix>/
 ```
@@ -99,38 +99,38 @@ gsutil rm -r gs://<bucket>/<prefix>/
 ## BigQuery
 
 ```bash
-# Listar datasets
+# List datasets
 bq ls
 
 # Query
 bq query --use_legacy_sql=false 'SELECT * FROM `project.dataset.table` LIMIT 10'
 
-# Listar tabelas
+# List tables
 bq ls <dataset>
 
 # Schema
 bq show --schema <dataset>.<table>
 ```
 
-## Configuração
+## Configuration
 
 ```bash
-# Projeto ativo
+# Active project
 gcloud config get-value project
 gcloud config set project <project-id>
 
-# Conta ativa
+# Active account
 gcloud auth list
 gcloud config set account <email>
 
-# Região/Zona padrão
+# Default region/zone
 gcloud config set compute/region <region>
 gcloud config set compute/zone <zone>
 ```
 
 ## Tips
 
-- Use `--format=json` ou `--format=table` para output estruturado
-- Use `--project=<id>` para operar em outro projeto
-- Use `--quiet` para suprimir confirmações
-- Para auth de service account: `gcloud auth activate-service-account --key-file=<key.json>`
+- Use `--format=json` or `--format=table` for structured output
+- Use `--project=<id>` to operate on another project
+- Use `--quiet` to suppress confirmations
+- For service account auth: `gcloud auth activate-service-account --key-file=<key.json>`

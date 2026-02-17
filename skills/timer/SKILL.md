@@ -14,23 +14,23 @@ You can set timers and alarms that run in the background. Use the DevClaw schedu
 
 ```bash
 # Simple countdown — sends a message when done
-sleep 300 && echo "⏰ Timer de 5 minutos finalizado!"
+sleep 300 && echo "⏰ 5-minute timer finished!"
 
 # With a custom message
-sleep 600 && echo "⏰ Hora de verificar o forno!"
+sleep 600 && echo "⏰ Time to check the oven!"
 
 # 30 seconds
-sleep 30 && echo "⏰ 30 segundos! Tempo esgotado."
+sleep 30 && echo "⏰ 30 seconds! Time's up."
 ```
 
-> **Importante:** Use `bash background:true` para que o timer rode em segundo plano sem bloquear.
+> **Important:** Use `bash background:true` so the timer runs in the background without blocking.
 
 ## Using the scheduler (for precise times)
 
 ```bash
 # Reminder at a specific time (one-shot cron)
 # Format: minute hour day month weekday
-cron_add --id "reminder-123" --schedule "30 14 * * *" --payload "Lembrete: reunião às 15h"
+cron_add --id "reminder-123" --schedule "30 14 * * *" --payload "Reminder: meeting at 3pm"
 
 # Remove after it fires
 cron_remove --id "reminder-123"
@@ -40,13 +40,13 @@ cron_remove --id "reminder-123"
 
 ```bash
 # Work session (25 min)
-sleep 1500 && echo "🍅 Pomodoro finalizado! Hora de uma pausa de 5 minutos."
+sleep 1500 && echo "🍅 Pomodoro finished! Time for a 5-minute break."
 
 # Short break (5 min)
-sleep 300 && echo "🔔 Pausa acabou! Volte ao trabalho."
+sleep 300 && echo "🔔 Break's over! Back to work."
 
 # Long break (15 min, after 4 pomodoros)
-sleep 900 && echo "☕ Pausa longa acabou! Pronto para mais um ciclo?"
+sleep 900 && echo "☕ Long break over! Ready for another cycle?"
 ```
 
 ## Time conversion reference
@@ -66,7 +66,7 @@ sleep 900 && echo "☕ Pausa longa acabou! Pronto para mais um ciclo?"
 ## Tips
 
 - Always run timers in background mode so the user can keep chatting.
-- Convert natural language times: "5 minutos" → `sleep 300`, "meia hora" → `sleep 1800`.
+- Convert natural language times: "5 minutes" → `sleep 300`, "half hour" → `sleep 1800`.
 - For recurring timers (e.g., "every 30 minutes"), use the scheduler with cron expressions.
 - When a timer completes, notify the user with a clear message including the original purpose.
 - For Pomodoro, track the cycle number if the user wants a full session.

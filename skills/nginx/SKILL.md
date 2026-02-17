@@ -1,11 +1,11 @@
 ---
 name: nginx
-description: "Configurar e gerenciar Nginx: sites, SSL, proxy reverso"
+description: "Nginx configuration, reverse proxy, and SSL"
 metadata: {"openclaw":{"always":false,"emoji":"🌍"}}
 ---
 # Nginx
 
-Gerenciamento de Nginx: configuração, proxy reverso, SSL.
+Nginx management: configuration, reverse proxy, SSL.
 
 ## Setup
 
@@ -20,13 +20,13 @@ brew install nginx
 sudo apt install nginx
 ```
 
-## Comandos Básicos
+## Basic Commands
 
 ```bash
-# Testar configuração (SEMPRE antes de reload)
+# Test configuration (ALWAYS before reload)
 sudo nginx -t
 
-# Reload (aplica config sem downtime)
+# Reload (applies config without downtime)
 sudo systemctl reload nginx
 
 # Restart
@@ -35,7 +35,7 @@ sudo systemctl restart nginx
 # Status
 systemctl status nginx
 
-# Versão e módulos
+# Version and modules
 nginx -V
 ```
 
@@ -49,27 +49,27 @@ sudo tail -100 /var/log/nginx/access.log
 # Error log
 sudo tail -f /var/log/nginx/error.log
 
-# Logs de um site específico (se configurado)
+# Logs for a specific site (if configured)
 sudo tail -f /var/log/nginx/<site>-access.log
 ```
 
-## Configuração de Sites
+## Site Configuration
 
 ```bash
-# Listar sites
+# List sites
 ls /etc/nginx/sites-available/
 ls /etc/nginx/sites-enabled/
 
-# Ativar site
+# Enable site
 sudo ln -s /etc/nginx/sites-available/<site> /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 
-# Desativar site
+# Disable site
 sudo rm /etc/nginx/sites-enabled/<site>
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-## Proxy Reverso (template)
+## Reverse Proxy (template)
 
 ```nginx
 server {
@@ -86,16 +86,16 @@ server {
 }
 ```
 
-## SSL com Certbot
+## SSL with Certbot
 
 ```bash
-# Instalar certbot
+# Install certbot
 sudo apt install certbot python3-certbot-nginx
 
-# Obter certificado (modifica nginx config automaticamente)
+# Get certificate (modifies nginx config automatically)
 sudo certbot --nginx -d example.com
 
-# Renovar
+# Renew
 sudo certbot renew --dry-run
 sudo certbot renew
 ```
@@ -114,8 +114,8 @@ location /ws {
 
 ## Tips
 
-- **Sempre** rode `nginx -t` antes de reload/restart
-- Use `sites-available` + symlink para `sites-enabled`
-- Para debug: `error_log /var/log/nginx/debug.log debug;`
-- Rate limiting: `limit_req_zone` na seção `http`
-- Gzip: ative em `/etc/nginx/nginx.conf` para performance
+- **Always** run `nginx -t` before reload/restart
+- Use `sites-available` + symlink to `sites-enabled`
+- For debug: `error_log /var/log/nginx/debug.log debug;`
+- Rate limiting: `limit_req_zone` in the `http` section
+- Gzip: enable in `/etc/nginx/nginx.conf` for performance

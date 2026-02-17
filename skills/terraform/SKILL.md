@@ -1,45 +1,45 @@
 ---
 name: terraform
-description: "Infraestrutura como código com Terraform"
+description: "Infrastructure as Code with Terraform"
 metadata: {"openclaw":{"always":false,"emoji":"🏗️"}}
 ---
 # Terraform
 
-Gerenciamento de infraestrutura como código.
+Infrastructure as Code management.
 
-## Workflow Básico
+## Basic Workflow
 
 ```bash
-# Inicializar (baixar providers)
+# Initialize (download providers)
 terraform init
 
-# Planejar (preview de mudanças)
+# Plan (preview changes)
 terraform plan
-terraform plan -out=plan.tfplan   # salvar plano
+terraform plan -out=plan.tfplan   # save plan
 
-# Aplicar
+# Apply
 terraform apply
-terraform apply plan.tfplan       # aplicar plano salvo
-terraform apply -auto-approve     # sem confirmação
+terraform apply plan.tfplan       # apply saved plan
+terraform apply -auto-approve     # no confirmation
 
-# Destruir
+# Destroy
 terraform destroy
-terraform destroy -target=aws_instance.web   # recurso específico
+terraform destroy -target=aws_instance.web   # specific resource
 ```
 
 ## State
 
 ```bash
-# Listar recursos no state
+# List resources in state
 terraform state list
 
-# Detalhes de um recurso
+# Resource details
 terraform state show <resource>
 
-# Mover recurso (refactoring)
+# Move resource (refactoring)
 terraform state mv <old> <new>
 
-# Remover do state (sem destruir)
+# Remove from state (without destroying)
 terraform state rm <resource>
 
 # Pull/Push remote state
@@ -47,18 +47,18 @@ terraform state pull > state.json
 terraform state push state.json
 ```
 
-## Output e Variáveis
+## Output & Variables
 
 ```bash
-# Ver outputs
+# View outputs
 terraform output
 terraform output -json
 terraform output <name>
 
-# Validar configuração
+# Validate configuration
 terraform validate
 
-# Formatar código
+# Format code
 terraform fmt
 terraform fmt -recursive
 ```
@@ -75,14 +75,14 @@ terraform workspace delete <name>
 ## Import
 
 ```bash
-# Importar recurso existente para o state
+# Import existing resource into state
 terraform import <resource_type>.<name> <id>
 ```
 
 ## Tips
 
-- Sempre rode `terraform plan` antes de `apply`
-- Use `-target` para aplicar recursos específicos
-- Use `terraform fmt` para manter código padronizado
-- State é sensível — nunca commite em repos públicos
-- Use backend remoto (S3, GCS) para trabalho em equipe
+- Always run `terraform plan` before `apply`
+- Use `-target` to apply specific resources
+- Use `terraform fmt` to keep code standardized
+- State is sensitive — never commit to public repos
+- Use remote backend (S3, GCS) for team work

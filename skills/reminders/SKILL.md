@@ -17,19 +17,19 @@ Use the `cron_add` tool to schedule reminders at specific times:
 ```bash
 # Reminder at a specific time today
 # cron format: minute hour day month weekday
-cron_add --id "rem-UNIQUE_ID" --schedule "0 15 14 2 *" --payload "📋 Lembrete: reunião com o cliente às 15h"
+cron_add --id "rem-UNIQUE_ID" --schedule "0 15 14 2 *" --payload "📋 Reminder: client meeting at 3pm"
 
 # Daily reminder at 9am
-cron_add --id "daily-water" --schedule "0 9 * * *" --payload "💧 Hora de beber água! Mantenha-se hidratado."
+cron_add --id "daily-water" --schedule "0 9 * * *" --payload "💧 Time to drink water! Stay hydrated."
 
 # Weekday reminder at 8:30am
-cron_add --id "standup" --schedule "30 8 * * 1-5" --payload "🏃 Daily standup em 30 minutos!"
+cron_add --id "standup" --schedule "30 8 * * 1-5" --payload "🏃 Daily standup in 30 minutes!"
 
 # Weekly reminder (every Monday at 10am)
-cron_add --id "weekly-review" --schedule "0 10 * * 1" --payload "📊 Hora da revisão semanal!"
+cron_add --id "weekly-review" --schedule "0 10 * * 1" --payload "📊 Time for the weekly review!"
 
 # Monthly reminder (1st of each month)
-cron_add --id "bills" --schedule "0 10 1 * *" --payload "💰 Verificar contas do mês"
+cron_add --id "bills" --schedule "0 10 1 * *" --payload "💰 Check monthly bills"
 ```
 
 ## Listing reminders

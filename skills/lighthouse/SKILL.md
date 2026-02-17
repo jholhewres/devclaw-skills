@@ -1,11 +1,11 @@
 ---
 name: lighthouse
-description: "Auditoria de performance web com Google Lighthouse"
+description: "Web performance audit with Google Lighthouse"
 metadata: {"openclaw":{"always":false,"emoji":"🏠"}}
 ---
 # Lighthouse
 
-Auditoria de performance, acessibilidade, SEO e best practices para sites.
+Audit performance, accessibility, SEO and best practices for websites.
 
 ## Setup
 
@@ -31,10 +31,10 @@ Auditoria de performance, acessibilidade, SEO e best practices para sites.
    npm install -g lighthouse
    ```
 
-## Rodar Auditoria
+## Run Audit
 
 ```bash
-# Auditoria completa (output no terminal)
+# Full audit (output to terminal)
 npx lighthouse <url> --output=json --chrome-flags="--headless --no-sandbox" 2>/dev/null | jq '{
   performance: .categories.performance.score,
   accessibility: .categories.accessibility.score,
@@ -42,40 +42,40 @@ npx lighthouse <url> --output=json --chrome-flags="--headless --no-sandbox" 2>/d
   seo: .categories.seo.score
 }'
 
-# Salvar report HTML
+# Save HTML report
 npx lighthouse <url> --output=html --output-path=./lighthouse-report.html --chrome-flags="--headless --no-sandbox"
 
-# Só performance
+# Performance only
 npx lighthouse <url> --only-categories=performance --output=json --chrome-flags="--headless --no-sandbox"
 ```
 
-## Categorias
+## Categories
 
-| Categoria | O que mede |
-|-----------|------------|
+| Category | What it measures |
+|----------|------------------|
 | Performance | LCP, FID, CLS, TTFB, speed index |
-| Accessibility | Contraste, alt text, ARIA, navegação por teclado |
+| Accessibility | Contrast, alt text, ARIA, keyboard navigation |
 | Best Practices | HTTPS, console errors, deprecated APIs |
 | SEO | Meta tags, structured data, mobile-friendly |
 
-## Interpretar Scores
+## Interpret Scores
 
-- **90-100**: Bom (verde)
-- **50-89**: Precisa melhorar (laranja)
-- **0-49**: Ruim (vermelho)
+- **90-100**: Good (green)
+- **50-89**: Needs Improvement (orange)
+- **0-49**: Poor (red)
 
-## Métricas Chave (Core Web Vitals)
+## Key Metrics (Core Web Vitals)
 
-| Métrica | Bom | Precisa Melhorar | Ruim |
-|---------|-----|-------------------|------|
+| Metric | Good | Needs Improvement | Poor |
+|--------|------|-------------------|------|
 | LCP (Largest Contentful Paint) | < 2.5s | 2.5s - 4s | > 4s |
 | FID (First Input Delay) | < 100ms | 100ms - 300ms | > 300ms |
 | CLS (Cumulative Layout Shift) | < 0.1 | 0.1 - 0.25 | > 0.25 |
 
-## Comparar Resultados
+## Compare Results
 
 ```bash
-# Rodar múltiplas vezes e comparar
+# Run multiple times and compare
 for i in 1 2 3; do
   npx lighthouse <url> --output=json --chrome-flags="--headless --no-sandbox" 2>/dev/null | \
     jq -r '"Run '$i': perf=\(.categories.performance.score) a11y=\(.categories.accessibility.score)"'
@@ -84,8 +84,8 @@ done
 
 ## Tips
 
-- Rode 3+ vezes e tire a média (resultados variam)
-- Use `--chrome-flags="--headless --no-sandbox"` para servers
-- Scores são multiplicados por 100 (0.95 = 95 pontos)
-- Use `--preset=desktop` para simular desktop (padrão é mobile)
-- Instale Chrome/Chromium no server se não tiver
+- Run 3+ times and average (results vary)
+- Use `--chrome-flags="--headless --no-sandbox"` for servers
+- Scores are multiplied by 100 (0.95 = 95 points)
+- Use `--preset=desktop` to simulate desktop (default is mobile)
+- Install Chrome/Chromium on server if not available

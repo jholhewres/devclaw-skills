@@ -123,7 +123,7 @@ gcalcli calw 2
 ## Tips
 
 - Always confirm with the user before creating or deleting events.
-- Parse natural language dates: "amanhã", "próxima segunda", "daqui a 2 horas".
+- Parse natural language dates (e.g., English: "tomorrow", "next Monday", "in 2 hours"; Portuguese: "amanhã", "próxima segunda", "daqui a 2 horas").
 - Use the user's timezone (from config or USER.md).
 - For recurring events, mention the recurrence pattern to the user.
 - When listing events, show: title, date/time, duration, location.

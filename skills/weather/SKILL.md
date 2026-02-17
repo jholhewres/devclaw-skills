@@ -85,5 +85,5 @@ curl -s "https://geocoding-api.open-meteo.com/v1/search?name=CITY&count=1" | jq 
 
 ## Triggers
 
-weather, what's the weather, temperature, will it rain, forecast,
-moon phase, previsão do tempo, vai chover, clima em, temperatura
+weather, what's the weather, temperature, will it rain, forecast, moon phase,
+previsão do tempo, vai chover, clima em, temperatura

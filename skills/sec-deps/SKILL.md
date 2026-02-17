@@ -1,6 +1,6 @@
 ---
 name: sec-deps
-description: "Auditoria de segurança de dependências: npm audit, govulncheck, pip audit"
+description: "Security audit for dependencies across languages"
 metadata: {"openclaw":{"always":false,"emoji":"🛡️"}}
 ---
 # Security Dependencies Audit
@@ -18,43 +18,43 @@ Verify vulnerabilities in project dependencies.
 ## Node.js (npm)
 
 ```bash
-# Auditoria
+# Audit
 npm audit
 npm audit --json | jq '.metadata.vulnerabilities'
 
-# Corrigir automaticamente
+# Fix automatically
 npm audit fix
-npm audit fix --force   # pode atualizar major versions
+npm audit fix --force   # may update major versions
 
-# Verificar outdated
+# Check outdated
 npm outdated
 ```
 
 ## Go
 
 ```bash
-# Instalar govulncheck (se necessário)
+# Install govulncheck (if needed)
 go install golang.org/x/vuln/cmd/govulncheck@latest
 
-# Verificar vulnerabilidades
+# Check vulnerabilities
 govulncheck ./...
 
-# Verificar módulos específicos
+# Check specific modules
 govulncheck -show verbose ./...
 ```
 
 ## Python (pip)
 
 ```bash
-# Instalar pip-audit (se necessário)
+# Install pip-audit (if needed)
 pip install pip-audit
 
-# Auditoria
+# Audit
 pip-audit
 pip-audit --format=json
 pip-audit -r requirements.txt
 
-# Safety (alternativa)
+# Safety (alternative)
 pip install safety
 safety check
 safety check --json
@@ -63,18 +63,18 @@ safety check --json
 ## Rust (cargo)
 
 ```bash
-# Instalar cargo-audit
+# Install cargo-audit
 cargo install cargo-audit
 
-# Auditoria
+# Audit
 cargo audit
 cargo audit --json
 ```
 
-## Multi-linguagem
+## Multi-language
 
 ```bash
-# Detectar e auditar automaticamente
+# Detect and audit automatically
 audit_all() {
   echo "=== Checking for vulnerabilities ==="
   
@@ -101,18 +101,18 @@ audit_all() {
 audit_all
 ```
 
-## Severidade
+## Severity
 
-| Nível | Ação |
-|-------|------|
-| Critical | Corrigir imediatamente |
-| High | Corrigir em 24h |
-| Moderate | Corrigir no próximo sprint |
-| Low | Avaliar e planejar |
+| Level | Action |
+|-------|--------|
+| Critical | Fix immediately |
+| High | Fix within 24h |
+| Moderate | Fix in next sprint |
+| Low | Evaluate and plan |
 
 ## Tips
 
-- Rode audit em CI/CD para bloquear PRs com vulnerabilidades críticas
-- Use `npm audit --production` para ignorar devDependencies
-- Mantenha lockfiles atualizados
-- Configure Dependabot ou Renovate para PRs automáticos
+- Run audit in CI/CD to block PRs with critical vulnerabilities
+- Use `npm audit --production` to ignore devDependencies
+- Keep lockfiles up to date
+- Configure Dependabot or Renovate for automatic PRs

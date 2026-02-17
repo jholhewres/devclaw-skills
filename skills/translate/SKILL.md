@@ -65,5 +65,5 @@ curl -s "https://libretranslate.com/languages" | jq '.[] | {code, name}'
 
 ## Triggers
 
-translate, translation, traduzir, tradução, what does this mean,
-como se diz, how do you say, en español, in english, em português
+translate, translation, what does this mean, how do you say, in english, en español,
+traduzir, tradução, como se diz, em português

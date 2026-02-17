@@ -1,11 +1,11 @@
 ---
 name: redis-cli
-description: "Interagir com Redis: keys, get, set, info e monitor"
+description: "Redis CLI for cache, queues, and in-memory data"
 metadata: {"openclaw":{"always":false,"emoji":"🔴"}}
 ---
 # Redis CLI
 
-Interface com Redis para cache, filas e dados em memória.
+Interface for Redis cache, queues, and in-memory data.
 
 ## Setup
 
@@ -20,17 +20,17 @@ brew install redis
 sudo apt install redis-tools
 ```
 
-## Conexão
+## Connection
 
 ```bash
 # Local
 redis-cli
 
-# Remoto
+# Remote
 redis-cli -h <host> -p <port>
 redis-cli -h <host> -p <port> -a <password>
 
-# Com URL
+# With URL
 redis-cli -u redis://:<password>@<host>:<port>/<db>
 
 # Ping
@@ -40,29 +40,29 @@ redis-cli ping
 ## Keys
 
 ```bash
-# Listar keys (cuidado em produção!)
+# List keys (WARNING: be careful in production!)
 redis-cli KEYS "prefix:*"        # pattern match
-redis-cli SCAN 0 MATCH "user:*" COUNT 100   # seguro para produção
+redis-cli SCAN 0 MATCH "user:*" COUNT 100   # safe for production
 
-# Info de uma key
+# Info for a key
 redis-cli TYPE <key>
-redis-cli TTL <key>              # tempo restante (-1 = sem expiração)
+redis-cli TTL <key>              # remaining time (-1 = no expiration)
 redis-cli OBJECT ENCODING <key>
 
-# Deletar
+# Delete
 redis-cli DEL <key>
 redis-cli DEL key1 key2 key3
 
-# Expiração
+# Expiration
 redis-cli EXPIRE <key> <seconds>
-redis-cli PERSIST <key>          # remover expiração
+redis-cli PERSIST <key>          # remove expiration
 ```
 
 ## Strings
 
 ```bash
 redis-cli SET <key> <value>
-redis-cli SET <key> <value> EX 3600   # expira em 1h
+redis-cli SET <key> <value> EX 3600   # expires in 1h
 redis-cli GET <key>
 redis-cli MGET key1 key2 key3
 redis-cli INCR <key>
@@ -83,7 +83,7 @@ redis-cli HDEL <key> <field>
 ```bash
 redis-cli LPUSH <key> <value>
 redis-cli RPUSH <key> <value>
-redis-cli LRANGE <key> 0 -1     # todos elementos
+redis-cli LRANGE <key> 0 -1     # all elements
 redis-cli LLEN <key>
 ```
 
@@ -96,33 +96,33 @@ redis-cli SCARD <key>            # count
 redis-cli SISMEMBER <key> <member>
 ```
 
-## Info e Monitor
+## Info and Monitor
 
 ```bash
-# Info geral
+# General info
 redis-cli INFO
 redis-cli INFO memory
 redis-cli INFO stats
 redis-cli INFO keyspace
 
-# Clientes conectados
+# Connected clients
 redis-cli CLIENT LIST
 
-# Monitor (ver comandos em tempo real - usar com cuidado)
+# Monitor (see commands in real time — use with caution)
 redis-cli MONITOR
 
-# Tamanho do banco
+# Database size
 redis-cli DBSIZE
 
-# Flush (CUIDADO!)
-redis-cli FLUSHDB       # banco atual
-redis-cli FLUSHALL      # todos bancos
+# Flush (WARNING!)
+redis-cli FLUSHDB       # current database
+redis-cli FLUSHALL      # all databases
 ```
 
 ## Tips
 
-- Use `SCAN` em vez de `KEYS` em produção (não bloqueia)
-- Use `--pipe` para import em massa
-- Use `--csv` para output em CSV
-- Use `--bigkeys` para encontrar keys grandes
-- Use `--latency` para medir latência
+- Use `SCAN` instead of `KEYS` in production (non-blocking)
+- Use `--pipe` for bulk import
+- Use `--csv` for CSV output
+- Use `--bigkeys` to find large keys
+- Use `--latency` to measure latency

@@ -29,14 +29,14 @@ EOF
 cat > ~/.devclaw/notes/shopping-list.md << 'EOF'
 # Shopping List
 
-- [ ] Leite
-- [ ] Pão
-- [ ] Ovos
-- [ ] Frutas
+- [ ] Milk
+- [ ] Bread
+- [ ] Eggs
+- [ ] Fruits
 EOF
 
 # Append to existing note
-echo "- [ ] Café" >> ~/.devclaw/notes/shopping-list.md
+echo "- [ ] Coffee" >> ~/.devclaw/notes/shopping-list.md
 
 # Journal entry (daily)
 cat >> ~/.devclaw/notes/journal-$(date +%Y-%m-%d).md << EOF
@@ -76,7 +76,7 @@ New content here.
 EOF
 
 # Mark todo as done (replace "- [ ]" with "- [x]")
-sed -i 's/- \[ \] Leite/- [x] Leite/' ~/.devclaw/notes/shopping-list.md
+sed -i 's/- \[ \] Milk/- [x] Milk/' ~/.devclaw/notes/shopping-list.md
 ```
 
 ## Deleting notes
@@ -106,11 +106,11 @@ mv ~/.devclaw/notes/old-note.md ~/.devclaw/notes/archive/
 - Use descriptive names so notes are easy to find later.
 - For todo lists, use `- [ ]` / `- [x]` markdown checkboxes.
 - Use tags at the bottom of notes (e.g., `Tags: #work #urgent`) for easier searching.
-- When the user says "anota isso" or "salva isso", create a quick note with timestamp.
+- When the user says "note this", "save this", "anota isso", or "salva isso", create a quick note with timestamp.
 - Read the note back to the user after creating it for confirmation.
 - For large collections, suggest organizing by folders/categories.
 
 ## Triggers
 
-note, save this, anota isso, salva isso, create a note, my notes,
-lista de compras, shopping list, todo list, journal, diário, lembrar disso
+note, save this, note this, anota isso, salva isso, create a note, my notes,
+remember this, lembrar disso, shopping list, lista de compras, todo list, journal, diário

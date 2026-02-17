@@ -1,11 +1,11 @@
 ---
 name: aws-cli
-description: "AWS CLI para S3, EC2, Lambda, CloudWatch, RDS e ECS"
+description: "AWS CLI for S3, EC2, Lambda, CloudWatch, RDS, and ECS"
 metadata: {"openclaw":{"always":false,"emoji":"☁️"}}
 ---
 # AWS CLI
 
-Interface com serviços AWS via aws cli.
+Manage AWS services via the aws CLI.
 
 ## Setup
 
@@ -37,10 +37,10 @@ Interface com serviços AWS via aws cli.
 ## S3
 
 ```bash
-# Listar buckets
+# List buckets
 aws s3 ls
 
-# Listar objetos
+# List objects
 aws s3 ls s3://<bucket>/<prefix>/
 
 # Upload/Download
@@ -51,7 +51,7 @@ aws s3 cp s3://<bucket>/<key> <file>
 aws s3 sync <dir> s3://<bucket>/<prefix>/
 aws s3 sync s3://<bucket>/<prefix>/ <dir>
 
-# Remover
+# Remove
 aws s3 rm s3://<bucket>/<key>
 aws s3 rm s3://<bucket>/<prefix>/ --recursive
 ```
@@ -59,7 +59,7 @@ aws s3 rm s3://<bucket>/<prefix>/ --recursive
 ## EC2
 
 ```bash
-# Listar instâncias
+# List instances
 aws ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,State.Name,InstanceType,PublicIpAddress,Tags[?Key==`Name`].Value|[0]]' --output table
 
 # Start/Stop
@@ -73,10 +73,10 @@ aws ec2 describe-security-groups --group-ids <sg-id>
 ## Lambda
 
 ```bash
-# Listar funções
+# List functions
 aws lambda list-functions --query 'Functions[].[FunctionName,Runtime,LastModified]' --output table
 
-# Invocar
+# Invoke
 aws lambda invoke --function-name <name> --payload '{"key":"value"}' output.json
 
 # Logs
@@ -86,20 +86,20 @@ aws logs filter-log-events --log-group-name /aws/lambda/<name> --limit 20
 ## CloudWatch
 
 ```bash
-# Listar log groups
+# List log groups
 aws logs describe-log-groups --query 'logGroups[].logGroupName'
 
-# Buscar logs
+# Search logs
 aws logs filter-log-events --log-group-name <group> --filter-pattern "ERROR" --limit 20
 
-# Métricas
+# Metrics
 aws cloudwatch get-metric-statistics --namespace AWS/EC2 --metric-name CPUUtilization --dimensions Name=InstanceId,Value=<id> --start-time <iso> --end-time <iso> --period 300 --statistics Average
 ```
 
 ## RDS
 
 ```bash
-# Listar instâncias
+# List instances
 aws rds describe-db-instances --query 'DBInstances[].[DBInstanceIdentifier,DBInstanceStatus,Engine,Endpoint.Address]' --output table
 ```
 
@@ -120,8 +120,8 @@ aws ecs describe-tasks --cluster <cluster> --tasks <task-arn>
 
 ## Tips
 
-- Use `--output table` para output legível
-- Use `--query` (JMESPath) para filtrar campos
-- Use `--profile <name>` para múltiplas contas
-- Use `--region <region>` quando necessário
-- Configure com `aws configure` ou env vars `AWS_ACCESS_KEY_ID` + `AWS_SECRET_ACCESS_KEY`
+- Use `--output table` for readable output
+- Use `--query` (JMESPath) to filter fields
+- Use `--profile <name>` for multiple accounts
+- Use `--region <region>` when needed
+- Configure with `aws configure` or env vars `AWS_ACCESS_KEY_ID` + `AWS_SECRET_ACCESS_KEY`

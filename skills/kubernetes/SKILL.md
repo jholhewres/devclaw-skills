@@ -1,11 +1,11 @@
 ---
 name: kubernetes
-description: "Gerenciar clusters Kubernetes via kubectl"
+description: "Manage Kubernetes clusters via kubectl"
 metadata: {"openclaw":{"always":false,"emoji":"☸️"}}
 ---
 # Kubernetes
 
-Gerenciamento de clusters Kubernetes via kubectl.
+Manage Kubernetes clusters via kubectl.
 
 ## Setup
 
@@ -27,12 +27,12 @@ Gerenciamento de clusters Kubernetes via kubectl.
    sudo apt update && sudo apt install -y kubectl
    ```
 
-## Recursos Básicos
+## Basics
 
 ```bash
 # Pods
-kubectl get pods -A                          # todos namespaces
-kubectl get pods -n <ns> -o wide             # com IPs e nodes
+kubectl get pods -A                          # all namespaces
+kubectl get pods -n <ns> -o wide             # with IPs and nodes
 kubectl describe pod <pod> -n <ns>
 kubectl logs <pod> -n <ns> --tail=100
 kubectl logs <pod> -n <ns> -c <container>    # multi-container
@@ -51,33 +51,33 @@ kubectl get svc -n <ns>
 kubectl describe svc <name> -n <ns>
 kubectl port-forward svc/<name> 8080:80 -n <ns>
 
-# ConfigMaps e Secrets
+# ConfigMaps and Secrets
 kubectl get configmap -n <ns>
 kubectl get secret -n <ns>
 kubectl get secret <name> -n <ns> -o jsonpath='{.data}'
 ```
 
-## Diagnóstico
+## Diagnostics
 
 ```bash
-# Eventos (útil para debug)
+# Events (useful for debug)
 kubectl get events -n <ns> --sort-by='.lastTimestamp'
 
-# Top (métricas)
+# Top (metrics)
 kubectl top pods -n <ns>
 kubectl top nodes
 
 # Nodes
 kubectl get nodes -o wide
 kubectl describe node <name>
-kubectl cordon <node>    # marcar unschedulable
+kubectl cordon <node>    # mark unschedulable
 kubectl drain <node> --ignore-daemonsets --delete-emptydir-data
 ```
 
-## Apply e Delete
+## Apply & Delete
 
 ```bash
-# Aplicar manifesto
+# Apply manifest
 kubectl apply -f <file.yaml>
 kubectl apply -f <directory>/
 
@@ -89,22 +89,22 @@ kubectl delete -f <file.yaml>
 kubectl delete pod <pod> -n <ns>
 ```
 
-## Contextos
+## Contexts
 
 ```bash
-# Listar contextos
+# List contexts
 kubectl config get-contexts
 
-# Trocar contexto
+# Switch context
 kubectl config use-context <name>
 
-# Ver contexto atual
+# View current context
 kubectl config current-context
 ```
 
 ## Tips
 
-- Use `-o yaml` ou `-o json` para output detalhado
-- Use `--watch` para monitorar mudanças em tempo real
-- Use `-l app=myapp` para filtrar por labels
-- Sempre especifique `-n <namespace>` para evitar surpresas
+- Use `-o yaml` or `-o json` for detailed output
+- Use `--watch` to monitor changes in real time
+- Use `-l app=myapp` to filter by labels
+- Always specify `-n <namespace>` to avoid surprises
