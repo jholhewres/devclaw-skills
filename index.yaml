@@ -2,12 +2,12 @@
 # Official skill collection for DevClaw Copilot.
 #
 # Each skill is a directory under skills/ containing a SKILL.md file.
-# Install with: copilot skill install github:jholhewres/devclaw-skills/skills/<name>
+# Install with: devclaw skill install github:jholhewres/devclaw-skills/skills/<name>
 #
-# Format: ClawdHub / OpenClaw compatible (SKILL.md with YAML frontmatter).
+# Format: ClawdHub compatible (SKILL.md with YAML frontmatter).
 
-version: "2.0"
-updated: 2026-02-13
+version: "3.0"
+updated: 2026-02-17
 
 skills:
   # ──────────── Builtin (no API key required) ────────────
@@ -15,50 +15,64 @@ skills:
     path: skills/weather
     version: 0.3.0
     category: builtin
-    tags: [weather, forecast, temperature, wttr, open-meteo, moon]
-    description: "Weather information and forecasts — no API key required"
+    tags: [weather, forecast, temperature, wttr, open-meteo]
+    description: "Weather information and forecasts (no API key)"
 
   calculator:
     path: skills/calculator
     version: 0.2.0
     category: builtin
-    tags: [math, calculator, conversion, computation]
-    description: "Mathematical calculations, conversions, and computations"
+    tags: [math, calculator, conversion]
+    description: "Mathematical calculations and conversions"
 
   timer:
     path: skills/timer
     version: 0.1.0
     category: builtin
-    tags: [timer, alarm, pomodoro, countdown]
+    tags: [timer, alarm, pomodoro]
     description: "Timers, alarms, and Pomodoro sessions"
 
   reminders:
     path: skills/reminders
     version: 0.1.0
     category: builtin
-    tags: [reminders, schedule, alerts, due-dates]
+    tags: [reminders, schedule, alerts]
     description: "Time-based reminders with scheduling"
 
   notes:
     path: skills/notes
     version: 0.1.0
     category: builtin
-    tags: [notes, memo, lists, ideas, journal]
-    description: "Quick notes, lists, and ideas — stored locally"
+    tags: [notes, memo, lists, ideas]
+    description: "Quick notes, lists, and ideas stored locally"
 
   translate:
     path: skills/translate
     version: 0.1.0
     category: builtin
     tags: [translate, language, multilingual]
-    description: "Translate text between any languages"
+    description: "Translate text between languages"
 
-  # ──────────── Data ────────────
+  location:
+    path: skills/location
+    version: 0.1.0
+    category: builtin
+    tags: [geocoding, ip, timezone, maps, distance]
+    description: "Geocoding, IP lookup, distance, timezone"
+
+  qr-code:
+    path: skills/qr-code
+    version: 0.1.0
+    category: builtin
+    tags: [qr, qrcode, generate, decode]
+    description: "Generate and decode QR codes"
+
+  # ──────────── Data & Web ────────────
   web-search:
     path: skills/web-search
     version: 0.2.0
     category: data
-    tags: [search, web, brave, duckduckgo, news]
+    tags: [search, web, brave, duckduckgo]
     description: "Web search via Brave Search API or DuckDuckGo"
     requires:
       any_env: [BRAVE_API_KEY]
@@ -67,33 +81,170 @@ skills:
     path: skills/web-fetch
     version: 0.2.0
     category: data
-    tags: [web, fetch, scrape, readability, markdown, curl]
-    description: "Fetch URL content and extract readable text/markdown"
+    tags: [web, fetch, scrape, readability]
+    description: "Fetch URL content and extract readable text"
+
+  web-scraper:
+    path: skills/web-scraper
+    version: 0.1.0
+    category: data
+    tags: [scraping, crawl, extract, playwright]
+    description: "Web scraping with CSS selectors, Playwright, curl"
 
   summarize:
     path: skills/summarize
     version: 0.2.0
     category: data
-    tags: [summarize, transcript, youtube, podcast, text-extraction]
-    description: "Summarize URLs, articles, videos, podcasts, and files"
+    tags: [summarize, transcript, youtube, podcast]
+    description: "Summarize URLs, articles, videos, and podcasts"
+
+  ocr:
+    path: skills/ocr
+    version: 0.1.0
+    category: data
+    tags: [ocr, tesseract, text-extraction, pdf]
+    description: "OCR text extraction from images and PDFs"
+    requires:
+      any_bins: [tesseract]
+
+  stock-prices:
+    path: skills/stock-prices
+    version: 0.1.0
+    category: data
+    tags: [stocks, finance, market, crypto, portfolio]
+    description: "Stock prices, crypto, and market data"
 
   # ──────────── Development ────────────
   github:
     path: skills/github
     version: 0.3.0
     category: development
-    tags: [github, git, issues, pull-requests, ci, releases]
+    tags: [github, git, issues, pull-requests, ci]
     description: "Full GitHub integration via gh CLI"
     requires:
       bins: [gh]
+
+  jira:
+    path: skills/jira
+    version: 0.1.0
+    category: development
+    tags: [jira, issues, sprints, agile, atlassian]
+    description: "Jira — issues, sprints, transitions, worklogs"
+    requires:
+      env: [JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN]
+
+  linear:
+    path: skills/linear
+    version: 0.1.0
+    category: development
+    tags: [linear, issues, projects, agile]
+    description: "Linear — issues, teams, projects"
+    requires:
+      env: [LINEAR_API_KEY]
+
+  database:
+    path: skills/database
+    version: 0.1.0
+    category: development
+    tags: [postgresql, mysql, mongodb, redis, sqlite]
+    description: "Database queries — PostgreSQL, MySQL, MongoDB, Redis, SQLite"
+
+  docker:
+    path: skills/docker
+    version: 0.1.0
+    category: development
+    tags: [docker, containers, compose, images]
+    description: "Docker containers, compose, volumes, networks"
+    requires:
+      bins: [docker]
+
+  filesystem:
+    path: skills/filesystem
+    version: 0.1.0
+    category: development
+    tags: [files, search, rsync, disk, permissions]
+    description: "Advanced filesystem operations, search, sync"
+
+  browser-automation:
+    path: skills/browser-automation
+    version: 0.1.0
+    category: development
+    tags: [browser, playwright, puppeteer, automation, e2e]
+    description: "Browser automation with Playwright/Puppeteer"
+
+  # ──────────── DevOps & Infrastructure ────────────
+  railway-deploy:
+    path: skills/railway-deploy
+    version: 0.1.0
+    category: devops
+    tags: [railway, deploy, hosting, databases]
+    description: "Railway deploy — projects, services, databases"
+    requires:
+      bins: [railway]
+
+  backup:
+    path: skills/backup
+    version: 0.1.0
+    category: devops
+    tags: [backup, rsync, tar, database-dump, cron]
+    description: "Backup scripts — rsync, tar, database dumps"
+
+  health:
+    path: skills/health
+    version: 0.1.0
+    category: devops
+    tags: [monitoring, healthcheck, uptime, ssl, alerting]
+    description: "Service health checks, uptime monitoring, SSL"
+
+  # ──────────── Communication ────────────
+  slack:
+    path: skills/slack
+    version: 0.1.0
+    category: communication
+    tags: [slack, messaging, channels, threads]
+    description: "Slack — messages, channels, threads, reactions"
+    requires:
+      env: [SLACK_BOT_TOKEN]
+
+  discord:
+    path: skills/discord
+    version: 0.1.0
+    category: communication
+    tags: [discord, webhooks, bot, embeds]
+    description: "Discord webhooks and bot API"
+
+  telegram:
+    path: skills/telegram
+    version: 0.1.0
+    category: communication
+    tags: [telegram, bot, messaging, files]
+    description: "Telegram Bot API — messages, files, interactive"
+    requires:
+      env: [TELEGRAM_BOT_TOKEN]
+
+  email:
+    path: skills/email
+    version: 0.1.0
+    category: communication
+    tags: [email, resend, sendgrid, mailgun, smtp]
+    description: "Send emails via Resend, SendGrid, Mailgun, SMTP"
+    requires:
+      any_env: [RESEND_API_KEY, SENDGRID_API_KEY, MAILGUN_API_KEY]
+
+  gmail:
+    path: skills/gmail
+    version: 0.1.0
+    category: communication
+    tags: [gmail, email, google, inbox]
+    description: "Gmail — list, read, send, labels"
 
   # ──────────── Productivity ────────────
   calendar:
     path: skills/calendar
     version: 0.2.0
     category: productivity
-    tags: [google, calendar, scheduling, events, meetings]
-    description: "Google Calendar integration via gcalcli or gog"
+    tags: [google, calendar, events, meetings]
+    description: "Google Calendar via gcalcli or gog"
     requires:
       any_bins: [gcalcli, gog]
 
@@ -101,8 +252,8 @@ skills:
     path: skills/gog
     version: 0.2.0
     category: productivity
-    tags: [google, gmail, calendar, drive, workspace, email]
-    description: "Google Workspace (Gmail, Calendar, Drive) via gog CLI"
+    tags: [google, gmail, calendar, drive, workspace]
+    description: "Google Workspace (Gmail, Calendar, Drive) via gog"
     requires:
       bins: [gog]
 
@@ -110,7 +261,7 @@ skills:
     path: skills/notion
     version: 0.1.0
     category: productivity
-    tags: [notion, notes, database, wiki, project-management]
+    tags: [notion, wiki, database, project-management]
     description: "Notion API — pages, databases, blocks"
     requires:
       env: [NOTION_API_KEY]
@@ -119,8 +270,8 @@ skills:
     path: skills/trello
     version: 0.1.0
     category: productivity
-    tags: [trello, kanban, tasks, boards, project-management]
-    description: "Manage Trello boards, lists, and cards"
+    tags: [trello, kanban, boards, tasks]
+    description: "Trello boards, lists, and cards"
     requires:
       env: [TRELLO_API_KEY, TRELLO_TOKEN]
 
@@ -128,7 +279,89 @@ skills:
     path: skills/todoist
     version: 0.1.0
     category: productivity
-    tags: [todoist, tasks, todo, productivity]
+    tags: [todoist, tasks, todo]
     description: "Todoist task management"
     requires:
       env: [TODOIST_API_TOKEN]
+
+  asana:
+    path: skills/asana
+    version: 0.1.0
+    category: productivity
+    tags: [asana, tasks, projects, workspaces]
+    description: "Asana — tasks, projects, workspaces, search"
+    requires:
+      env: [ASANA_ACCESS_TOKEN]
+
+  clickup:
+    path: skills/clickup
+    version: 0.1.0
+    category: productivity
+    tags: [clickup, tasks, time-tracking, workspaces]
+    description: "ClickUp — tasks, comments, time tracking"
+    requires:
+      env: [CLICKUP_API_TOKEN]
+
+  airtable:
+    path: skills/airtable
+    version: 0.1.0
+    category: productivity
+    tags: [airtable, database, spreadsheet, records]
+    description: "Airtable — records, tables, batch operations"
+    requires:
+      env: [AIRTABLE_API_KEY]
+
+  # ──────────── Finance & Payments ────────────
+  payments:
+    path: skills/payments
+    version: 0.1.0
+    category: finance
+    tags: [stripe, paypal, payments, invoices]
+    description: "Payments via Stripe, PayPal, Lightning Network"
+    requires:
+      any_env: [STRIPE_SECRET_KEY, PAYPAL_CLIENT_ID]
+
+  crypto-wallet:
+    path: skills/crypto-wallet
+    version: 0.1.0
+    category: finance
+    tags: [bitcoin, ethereum, crypto, wallet, portfolio]
+    description: "Crypto wallets, balances, and market data"
+
+  # ──────────── Media & Files ────────────
+  image-tools:
+    path: skills/image-tools
+    version: 0.1.0
+    category: media
+    tags: [image, resize, convert, compress, watermark]
+    description: "Image processing — resize, convert, compress, watermark"
+
+  video-tools:
+    path: skills/video-tools
+    version: 0.1.0
+    category: media
+    tags: [video, ffmpeg, convert, compress, trim]
+    description: "Video processing via ffmpeg"
+    requires:
+      bins: [ffmpeg]
+
+  audio-tts:
+    path: skills/audio-tts
+    version: 0.1.0
+    category: media
+    tags: [tts, audio, speech, openai, elevenlabs]
+    description: "Text-to-speech — OpenAI, ElevenLabs, Google, Whisper"
+
+  pdf-tools:
+    path: skills/pdf-tools
+    version: 0.1.0
+    category: media
+    tags: [pdf, merge, split, compress, extract]
+    description: "PDF tools — merge, split, compress, extract, watermark"
+
+  screenshot:
+    path: skills/screenshot
+    version: 0.1.0
+    category: media
+    tags: [screenshot, capture, puppeteer, playwright]
+    description: "Web page screenshots via API or headless browsers"
