@@ -6,7 +6,7 @@
 #
 # Format: ClawdHub compatible (SKILL.md with YAML frontmatter).
 
-version: "3.0"
+version: "4.0"
 updated: 2026-02-17
 
 skills:
@@ -158,6 +158,110 @@ skills:
     requires:
       bins: [docker]
 
+  docker-compose:
+    path: skills/docker-compose
+    version: 0.1.0
+    category: development
+    tags: [docker, compose, multi-service, scaling, profiles]
+    description: "Advanced Docker Compose — profiles, scaling, networking"
+    requires:
+      bins: [docker]
+
+  kubernetes:
+    path: skills/kubernetes
+    version: 0.1.0
+    category: development
+    tags: [kubernetes, k8s, kubectl, pods, deployments, services]
+    description: "Kubernetes cluster management via kubectl"
+    requires:
+      bins: [kubectl]
+
+  terraform:
+    path: skills/terraform
+    version: 0.1.0
+    category: development
+    tags: [terraform, iac, infrastructure, cloud, hcl]
+    description: "Infrastructure as Code with Terraform"
+    requires:
+      bins: [terraform]
+
+  aws-cli:
+    path: skills/aws-cli
+    version: 0.1.0
+    category: development
+    tags: [aws, s3, ec2, lambda, cloudwatch, rds, ecs]
+    description: "AWS CLI — S3, EC2, Lambda, CloudWatch, RDS, ECS"
+    requires:
+      bins: [aws]
+
+  gcloud:
+    path: skills/gcloud
+    version: 0.1.0
+    category: development
+    tags: [gcp, google-cloud, compute, cloud-run, gcs, bigquery]
+    description: "Google Cloud CLI — Compute, Cloud Run, GCS, BigQuery"
+    requires:
+      bins: [gcloud]
+
+  azure-cli:
+    path: skills/azure-cli
+    version: 0.1.0
+    category: development
+    tags: [azure, az, vms, app-service, blob, sql]
+    description: "Azure CLI — VMs, App Service, Blob Storage, SQL"
+    requires:
+      bins: [az]
+
+  cargo:
+    path: skills/cargo
+    version: 0.1.0
+    category: development
+    tags: [rust, cargo, build, test, clippy, publish]
+    description: "Rust development with Cargo"
+    requires:
+      bins: [cargo]
+
+  pip-poetry:
+    path: skills/pip-poetry
+    version: 0.1.0
+    category: development
+    tags: [python, pip, poetry, pipenv, venv]
+    description: "Python package management — pip, poetry, pipenv"
+    requires:
+      bins: [python3]
+
+  tmux:
+    path: skills/tmux
+    version: 0.1.0
+    category: development
+    tags: [tmux, terminal, multiplexer, sessions]
+    description: "Terminal multiplexing with tmux"
+    requires:
+      bins: [tmux]
+
+  claude-code:
+    path: skills/claude-code
+    version: 0.1.0
+    category: development
+    tags: [claude, ai, coding, assistant, anthropic]
+    description: "Advanced coding via Claude Code CLI"
+    requires:
+      bins: [claude]
+
+  image-gen:
+    path: skills/image-gen
+    version: 0.1.0
+    category: development
+    tags: [image, generation, dall-e, gpt-image, ai]
+    description: "Generate images from text descriptions"
+
+  project-manager:
+    path: skills/project-manager
+    version: 0.1.0
+    category: development
+    tags: [projects, workspace, detection, languages]
+    description: "Register and manage development projects"
+
   filesystem:
     path: skills/filesystem
     version: 0.1.0
@@ -172,11 +276,106 @@ skills:
     tags: [browser, playwright, puppeteer, automation, e2e]
     description: "Browser automation with Playwright/Puppeteer"
 
+  # ──────────── Quality & Analysis ────────────
+  lighthouse:
+    path: skills/lighthouse
+    version: 0.1.0
+    category: development
+    tags: [lighthouse, performance, a11y, seo, web-vitals]
+    description: "Web performance audit with Google Lighthouse"
+    requires:
+      bins: [npx]
+
+  sec-deps:
+    path: skills/sec-deps
+    version: 0.1.0
+    category: development
+    tags: [security, audit, vulnerabilities, npm-audit, govulncheck]
+    description: "Security audit for dependencies across languages"
+
+  a11y-axe:
+    path: skills/a11y-axe
+    version: 0.1.0
+    category: development
+    tags: [accessibility, axe-core, wcag, a11y, audit]
+    description: "Accessibility audit with axe-core"
+    requires:
+      bins: [npx]
+
+  bundler-analyze:
+    path: skills/bundler-analyze
+    version: 0.1.0
+    category: development
+    tags: [bundle, webpack, vite, size, performance]
+    description: "Analyze JS bundle size (Vite/Webpack)"
+
+  color-contrast:
+    path: skills/color-contrast
+    version: 0.1.0
+    category: development
+    tags: [color, contrast, wcag, accessibility, design]
+    description: "Calculate WCAG color contrast ratios"
+
+  dora-metrics:
+    path: skills/dora-metrics
+    version: 0.1.0
+    category: development
+    tags: [dora, metrics, deployment, lead-time, mttr]
+    description: "Calculate DORA engineering metrics from git"
+
+  changelog-gen:
+    path: skills/changelog-gen
+    version: 0.1.0
+    category: development
+    tags: [changelog, conventional-commits, release, git]
+    description: "Generate CHANGELOG.md from conventional commits"
+
+  release-notes:
+    path: skills/release-notes
+    version: 0.1.0
+    category: development
+    tags: [release, notes, github, issues, prs]
+    description: "Generate release notes from issues + commits"
+
   # ──────────── DevOps & Infrastructure ────────────
+  nginx:
+    path: skills/nginx
+    version: 0.1.0
+    category: infra
+    tags: [nginx, webserver, proxy, ssl, reverse-proxy]
+    description: "Nginx configuration, reverse proxy, and SSL"
+    requires:
+      bins: [nginx]
+
+  redis-cli:
+    path: skills/redis-cli
+    version: 0.1.0
+    category: infra
+    tags: [redis, cache, database, keys, pub-sub]
+    description: "Redis CLI for cache, queues, and in-memory data"
+    requires:
+      bins: [redis-cli]
+
+  systemd:
+    path: skills/systemd
+    version: 0.1.0
+    category: infra
+    tags: [systemd, systemctl, journalctl, linux, services]
+    description: "Manage Linux services with systemctl and journalctl"
+
+  pm2:
+    path: skills/pm2
+    version: 0.1.0
+    category: infra
+    tags: [pm2, process, manager, nodejs, daemon]
+    description: "Process management with PM2"
+    requires:
+      bins: [pm2]
+
   railway-deploy:
     path: skills/railway-deploy
     version: 0.1.0
-    category: devops
+    category: infra
     tags: [railway, deploy, hosting, databases]
     description: "Railway deploy — projects, services, databases"
     requires:
@@ -185,14 +384,14 @@ skills:
   backup:
     path: skills/backup
     version: 0.1.0
-    category: devops
+    category: infra
     tags: [backup, rsync, tar, database-dump, cron]
     description: "Backup scripts — rsync, tar, database dumps"
 
   health:
     path: skills/health
     version: 0.1.0
-    category: devops
+    category: infra
     tags: [monitoring, healthcheck, uptime, ssl, alerting]
     description: "Service health checks, uptime monitoring, SSL"
 
@@ -239,6 +438,69 @@ skills:
     description: "Gmail — list, read, send, labels"
 
   # ──────────── Productivity ────────────
+  obsidian:
+    path: skills/obsidian
+    version: 0.1.0
+    category: productivity
+    tags: [obsidian, vault, notes, wikilinks, tags, daily-notes, zettelkasten]
+    description: "Manage Obsidian vaults — notes, links, tags, daily notes"
+
+  journal:
+    path: skills/journal
+    version: 0.1.0
+    category: productivity
+    tags: [journal, diary, reflection, daily, writing]
+    description: "Daily journaling with structured entries and reflections"
+
+  pomodoro:
+    path: skills/pomodoro
+    version: 0.1.0
+    category: productivity
+    tags: [pomodoro, focus, productivity, timer, sessions]
+    description: "Pomodoro technique — focus sessions, breaks, tracking"
+
+  time-tracker:
+    path: skills/time-tracker
+    version: 0.1.0
+    category: productivity
+    tags: [time, tracker, hours, projects, tasks, reporting]
+    description: "Track time spent on tasks and projects"
+
+  habits:
+    path: skills/habits
+    version: 0.1.0
+    category: productivity
+    tags: [habits, streaks, daily, tracking, routine]
+    description: "Track daily habits and streaks"
+
+  meeting-notes:
+    path: skills/meeting-notes
+    version: 0.1.0
+    category: productivity
+    tags: [meetings, notes, action-items, standup, retro]
+    description: "Structured meeting notes with action items extraction"
+
+  bookmarks:
+    path: skills/bookmarks
+    version: 0.1.0
+    category: productivity
+    tags: [bookmarks, links, references, save, organize]
+    description: "Save, organize, and search bookmarks and references"
+
+  standup-summary:
+    path: skills/standup-summary
+    version: 0.1.0
+    category: productivity
+    tags: [standup, daily, summary, git, agile]
+    description: "Generate daily standup summary from git + issues"
+
+  sprint-report:
+    path: skills/sprint-report
+    version: 0.1.0
+    category: productivity
+    tags: [sprint, report, velocity, agile, scrum]
+    description: "Generate sprint reports from git + issue tracker"
+
   calendar:
     path: skills/calendar
     version: 0.2.0
@@ -329,6 +591,33 @@ skills:
     description: "Crypto wallets, balances, and market data"
 
   # ──────────── Media & Files ────────────
+  ffmpeg:
+    path: skills/ffmpeg
+    version: 0.1.0
+    category: media
+    tags: [ffmpeg, video, audio, convert, transcode, trim]
+    description: "Video and audio processing with ffmpeg"
+    requires:
+      bins: [ffmpeg]
+
+  imagemagick:
+    path: skills/imagemagick
+    version: 0.1.0
+    category: media
+    tags: [imagemagick, image, resize, convert, magick]
+    description: "Image processing with ImageMagick"
+    requires:
+      any_bins: [magick, convert]
+
+  pandoc:
+    path: skills/pandoc
+    version: 0.1.0
+    category: media
+    tags: [pandoc, document, conversion, pdf, markdown, docx]
+    description: "Document format conversion with Pandoc"
+    requires:
+      bins: [pandoc]
+
   image-tools:
     path: skills/image-tools
     version: 0.1.0
