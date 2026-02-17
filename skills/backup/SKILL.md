@@ -1,7 +1,7 @@
 ---
 name: backup
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Backup and restore — files, databases, and system backups"
 category: system
 tags: [backup, restore, archive, recovery, sync]

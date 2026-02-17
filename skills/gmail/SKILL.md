@@ -1,7 +1,7 @@
 ---
 name: gmail
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Gmail API — read, send, and manage emails via Gmail"
 category: communication
 tags: [gmail, email, google, mail, inbox]
@@ -66,7 +66,7 @@ curl -s "https://gmail.googleapis.com/gmail/v1/users/me/messages/MESSAGE_ID?form
 RAW_EMAIL=$(cat <<EOF | base64 -w0
 From: me@gmail.com
 To: recipient@example.com
-Subject: Test Email from goclaw
+Subject: Test Email from DevClaw
 
 This is the email body.
 Can have multiple lines.

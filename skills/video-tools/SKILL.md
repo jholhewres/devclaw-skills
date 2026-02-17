@@ -1,7 +1,7 @@
 ---
 name: video-tools
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Video manipulation — convert, compress, trim, and edit videos with ffmpeg"
 category: media
 tags: [video, ffmpeg, convert, compress, trim, audio]

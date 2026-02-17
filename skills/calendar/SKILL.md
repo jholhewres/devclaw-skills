@@ -1,7 +1,7 @@
 ---
 name: calendar
 version: 0.3.0
-author: goclaw
+author: devclaw
 description: "Google Calendar — list, create, and manage events via gcal CLI"
 category: productivity
 tags: [google, calendar, scheduling, events, meetings, gcal]

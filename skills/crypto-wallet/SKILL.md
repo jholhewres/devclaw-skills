@@ -1,7 +1,7 @@
 ---
 name: crypto-wallet
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Cryptocurrency wallet — check balances, addresses, and transactions"
 category: finance
 tags: [crypto, bitcoin, ethereum, wallet, blockchain]

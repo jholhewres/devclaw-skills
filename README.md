@@ -1,6 +1,6 @@
-# GoClaw Skills Catalog
+# DevClaw Skills Catalog
 
-Official skill collection for [GoClaw Copilot](https://github.com/jholhewres/goclaw).
+Official skill collection for [DevClaw Copilot](https://github.com/jholhewres/devclaw).
 
 Skills extend the agent's capabilities by providing contextual instructions on how to use
 CLI tools, APIs, and workflows. Each skill is a `SKILL.md` file with YAML frontmatter
@@ -45,15 +45,15 @@ CLI tools, APIs, and workflows. Each skill is a `SKILL.md` file with YAML frontm
 
 ## Installation
 
-### Via GoClaw CLI
+### Via DevClaw CLI
 
 ```bash
 # Install a specific skill
-copilot skill install github:jholhewres/goclaw-skills/skills/web-search
+copilot skill install github:jholhewres/devclaw-skills/skills/web-search
 
 # Or clone and install all
-git clone https://github.com/jholhewres/goclaw-skills.git
-cp -r goclaw-skills/skills/* ./skills/
+git clone git@github.com:jholhewres/devclaw-skills.git
+cp -r devclaw-skills/skills/* ./skills/
 ```
 
 ### During Setup
@@ -62,10 +62,10 @@ When running `copilot setup`, you'll be offered a selection of default skills to
 
 ### Manual
 
-Copy the skill directory to your GoClaw `skills/` folder:
+Copy the skill directory to your DevClaw `skills/` folder:
 
 ```bash
-cp -r /path/to/goclaw-skills/skills/weather ./skills/weather
+cp -r /path/to/devclaw-skills/skills/weather ./skills/weather
 ```
 
 ## Skill Format
@@ -124,7 +124,7 @@ Include bash examples, tips, and trigger phrases.
 3. Test: `copilot skill info my-skill`
 4. The skill is loaded automatically on next `copilot serve` or `copilot chat`
 
-You can also ask GoClaw to create skills via chat:
+You can also ask DevClaw to create skills via chat:
 
 > "Create a skill that checks Docker container status"
 

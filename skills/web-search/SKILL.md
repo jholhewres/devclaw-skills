@@ -1,7 +1,7 @@
 ---
 name: web-search
 version: 0.2.0
-author: goclaw
+author: devclaw
 description: "Search the web for current information using Brave Search API or DuckDuckGo"
 category: data
 tags: [search, web, brave, duckduckgo, news]

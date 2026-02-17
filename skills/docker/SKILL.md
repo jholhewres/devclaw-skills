@@ -1,7 +1,7 @@
 ---
 name: docker
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Docker management — containers, images, volumes, and networks"
 category: devops
 tags: [docker, containers, devops, deployment]

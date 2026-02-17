@@ -1,7 +1,7 @@
 ---
 name: location
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Location and geocoding — addresses, coordinates, maps, and timezone"
 category: utilities
 tags: [location, geocoding, maps, coordinates, timezone]

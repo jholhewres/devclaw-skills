@@ -1,7 +1,7 @@
 ---
 name: translate
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Translate text between languages — using LLM capabilities and web APIs"
 category: builtin
 tags: [translate, language, i18n, multilingual]

@@ -1,7 +1,7 @@
 ---
 name: browser-automation
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Browser automation with Playwright — navigate, click, fill forms, scrape"
 category: automation
 tags: [browser, playwright, automation, scraping, web]

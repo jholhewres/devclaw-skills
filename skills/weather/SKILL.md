@@ -1,7 +1,7 @@
 ---
 name: weather
 version: 0.3.0
-author: goclaw
+author: devclaw
 description: "Weather information and forecasts — no API key required"
 category: builtin
 tags: [weather, forecast, temperature, wttr, open-meteo, moon]

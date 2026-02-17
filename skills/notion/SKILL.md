@@ -1,7 +1,7 @@
 ---
 name: notion
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Notion API — create, read, search pages, databases, and blocks"
 category: productivity
 tags: [notion, notes, database, wiki, project-management]

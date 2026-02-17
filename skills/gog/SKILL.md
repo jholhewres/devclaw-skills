@@ -1,7 +1,7 @@
 ---
 name: gog
 version: 0.2.0
-author: goclaw
+author: devclaw
 description: "Google Workspace integration — Gmail, Calendar, Drive via gog CLI"
 category: productivity
 tags: [google, gmail, calendar, drive, workspace, email]

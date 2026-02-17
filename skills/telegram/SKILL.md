@@ -1,7 +1,7 @@
 ---
 name: telegram
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Telegram Bot API — send messages, photos, files to users and groups"
 category: communication
 tags: [telegram, messaging, bot, notifications]
@@ -38,7 +38,7 @@ curl -s "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/getUpdates" | jq '.resu
 # Send text message
 curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
   -H "Content-Type: application/json" \
-  -d '{"chat_id": "CHAT_ID", "text": "Hello from goclaw!"}'
+  -d '{"chat_id": "CHAT_ID", "text": "Hello from DevClaw!"}'
 
 # Markdown formatting
 curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \

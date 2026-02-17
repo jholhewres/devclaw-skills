@@ -1,7 +1,7 @@
 ---
 name: payments
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Payment processing — Stripe, PayPal, Lightning Network payments"
 category: finance
 tags: [payments, stripe, paypal, bitcoin, lightning, invoice]

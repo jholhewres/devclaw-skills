@@ -1,7 +1,7 @@
 ---
 name: github
 version: 0.3.0
-author: goclaw
+author: devclaw
 description: "Full GitHub integration via gh CLI — issues, PRs, releases, CI, search"
 category: development
 tags: [github, git, issues, pull-requests, repositories, ci, releases]

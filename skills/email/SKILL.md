@@ -1,7 +1,7 @@
 ---
 name: email
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Send emails via SMTP or API services (SendGrid, Mailgun, Resend)"
 category: communication
 tags: [email, smtp, sendgrid, mailgun, resend, mail]
@@ -25,7 +25,7 @@ curl -s -X POST "https://api.resend.com/emails" \
   -d '{
     "from": "onboarding@resend.dev",
     "to": "recipient@example.com",
-    "subject": "Hello from goclaw",
+    "subject": "Hello from DevClaw",
     "html": "<h1>Hello!</h1><p>This is a test email.</p>"
   }'
 ```
@@ -43,7 +43,7 @@ curl -s -X POST "https://api.sendgrid.com/v3/mail/send" \
   -d '{
     "personalizations": [{"to": [{"email": "recipient@example.com"}]}],
     "from": {"email": "sender@example.com"},
-    "subject": "Hello from goclaw",
+    "subject": "Hello from DevClaw",
     "content": [{"type": "text/plain", "value": "Email body text"}]
   }'
 ```
@@ -60,7 +60,7 @@ curl -s -X POST "https://api.mailgun.net/v3/$MAILGUN_DOMAIN/messages" \
   -u "api:$MAILGUN_API_KEY" \
   -d from="sender@$MAILGUN_DOMAIN" \
   -d to="recipient@example.com" \
-  -d subject="Hello from goclaw" \
+  -d subject="Hello from DevClaw" \
   -d text="Email body text"
 ```
 
@@ -77,7 +77,7 @@ curl -s -X POST "https://api.postmarkapp.com/email" \
   -d '{
     "From": "sender@example.com",
     "To": "recipient@example.com",
-    "Subject": "Hello from goclaw",
+    "Subject": "Hello from DevClaw",
     "TextBody": "Email body text"
   }'
 ```
@@ -94,7 +94,7 @@ curl -s --url "smtp://smtp.example.com:587" \
   -T - <<EOF
 From: sender@example.com
 To: recipient@example.com
-Subject: Hello from goclaw
+Subject: Hello from DevClaw
 
 Email body text
 EOF

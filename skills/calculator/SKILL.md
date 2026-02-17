@@ -1,7 +1,7 @@
 ---
 name: calculator
 version: 0.2.0
-author: goclaw
+author: devclaw
 description: "Mathematical calculations, conversions, and computations"
 category: builtin
 tags: [math, calculator, conversion, computation]

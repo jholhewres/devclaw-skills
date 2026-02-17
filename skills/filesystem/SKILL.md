@@ -1,7 +1,7 @@
 ---
 name: filesystem
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "File system operations — advanced file manipulation, search, and management"
 category: system
 tags: [filesystem, files, search, management, system]

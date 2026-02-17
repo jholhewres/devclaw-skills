@@ -1,7 +1,7 @@
 ---
 name: health
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Health and system monitoring — check services, uptime, and alerts"
 category: monitoring
 tags: [health, monitoring, uptime, alerts, status]

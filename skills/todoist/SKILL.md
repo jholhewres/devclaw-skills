@@ -1,7 +1,7 @@
 ---
 name: todoist
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Todoist task management — create, list, complete, and organize tasks"
 category: productivity
 tags: [todoist, tasks, todo, productivity, project-management]

@@ -1,7 +1,7 @@
 ---
 name: web-fetch
 version: 0.2.0
-author: goclaw
+author: devclaw
 description: "Fetch URL content and extract readable text/markdown"
 category: data
 tags: [web, fetch, scrape, readability, markdown, curl]

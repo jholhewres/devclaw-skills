@@ -1,7 +1,7 @@
 ---
 name: linear
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Linear API — issues, projects, and workflow management"
 category: project-management
 tags: [linear, issues, tickets, agile, kanban]

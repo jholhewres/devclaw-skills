@@ -1,7 +1,7 @@
 ---
 name: asana
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Asana API — tasks, projects, and team collaboration"
 category: project-management
 tags: [asana, tasks, projects, collaboration, team]

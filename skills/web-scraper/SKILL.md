@@ -1,7 +1,7 @@
 ---
 name: web-scraper
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Web scraping — extract data from websites using curl, pup, or Python"
 category: data
 tags: [scraper, web, extraction, crawling, html]

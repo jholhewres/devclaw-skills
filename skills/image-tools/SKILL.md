@@ -1,7 +1,7 @@
 ---
 name: image-tools
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Image manipulation — resize, convert, compress, and edit images"
 category: media
 tags: [image, resize, convert, compress, imagemagick]

@@ -1,7 +1,7 @@
 ---
 name: slack
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Slack integration — send messages, list channels, manage workspace"
 category: communication
 tags: [slack, messaging, teams, channels, notifications]
@@ -30,7 +30,7 @@ Interact with Slack workspaces using the Slack Web API.
 curl -s -X POST "https://slack.com/api/chat.postMessage" \
   -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"channel": "C12345678", "text": "Hello from goclaw!"}'
+  -d '{"channel": "C12345678", "text": "Hello from DevClaw!"}'
 
 # Send to user (DM)
 curl -s -X POST "https://slack.com/api/chat.postMessage" \

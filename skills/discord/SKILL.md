@@ -1,7 +1,7 @@
 ---
 name: discord
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Discord integration — send messages via webhooks and bots"
 category: communication
 tags: [discord, messaging, gaming, communities, webhooks]
@@ -29,14 +29,14 @@ Interact with Discord using webhooks or the Bot API.
 # Simple message
 curl -s -X POST "$DISCORD_WEBHOOK_URL" \
   -H "Content-Type: application/json" \
-  -d '{"content": "Hello from goclaw!"}'
+  -d '{"content": "Hello from DevClaw!"}'
 
 # With username and avatar override
 curl -s -X POST "$DISCORD_WEBHOOK_URL" \
   -H "Content-Type: application/json" \
   -d '{
     "content": "Custom message",
-    "username": "goclaw Bot",
+    "username": "DevClaw Bot",
     "avatar_url": "https://example.com/avatar.png"
   }'
 
@@ -88,7 +88,7 @@ curl -s -X POST "$DISCORD_WEBHOOK_URL" \
       "title": "Deploy Status",
       "description": "Production deployment completed",
       "color": 3066993,
-      "footer": {"text": "goclaw Automation"}
+      "footer": {"text": "DevClaw Automation"}
     }]
   }'
 

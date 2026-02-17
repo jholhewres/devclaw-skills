@@ -1,7 +1,7 @@
 ---
 name: screenshot
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Capture website screenshots — full page, viewport, or element"
 category: media
 tags: [screenshot, capture, web, image, website]

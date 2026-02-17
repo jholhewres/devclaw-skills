@@ -1,7 +1,7 @@
 ---
 name: pdf-tools
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "PDF manipulation — merge, split, compress, convert, and modify PDFs"
 category: documents
 tags: [pdf, merge, split, compress, convert, document]

@@ -1,7 +1,7 @@
 ---
 name: railway-deploy
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Railway deployment — deploy apps, databases, and services"
 category: devops
 tags: [railway, deploy, paas, hosting, cloud]

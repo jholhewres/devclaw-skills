@@ -1,7 +1,7 @@
 ---
 name: stock-prices
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Stock prices and market data — quotes, charts, and financial info"
 category: finance
 tags: [stocks, finance, market, trading, quotes]

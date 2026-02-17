@@ -1,8 +1,8 @@
-# GoClaw Skills Catalog
-# Official skill collection for GoClaw Copilot.
+# DevClaw Skills Catalog
+# Official skill collection for DevClaw Copilot.
 #
 # Each skill is a directory under skills/ containing a SKILL.md file.
-# Install with: copilot skill install github:jholhewres/goclaw-skills/skills/<name>
+# Install with: copilot skill install github:jholhewres/devclaw-skills/skills/<name>
 #
 # Format: ClawdHub / OpenClaw compatible (SKILL.md with YAML frontmatter).
 

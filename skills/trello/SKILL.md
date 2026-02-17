@@ -1,7 +1,7 @@
 ---
 name: trello
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Manage Trello boards, lists, and cards via REST API"
 category: productivity
 tags: [trello, kanban, tasks, boards, project-management]

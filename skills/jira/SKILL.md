@@ -1,7 +1,7 @@
 ---
 name: jira
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Jira Cloud integration — issues, transitions, worklogs, sprints"
 category: project-management
 tags: [jira, atlassian, issues, tickets, agile, sprints]

@@ -1,7 +1,7 @@
 ---
 name: clickup
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "ClickUp API — tasks, lists, spaces, and productivity management"
 category: project-management
 tags: [clickup, tasks, productivity, project-management]

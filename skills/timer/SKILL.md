@@ -1,14 +1,14 @@
 ---
 name: timer
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Set timers, alarms, and Pomodoro sessions — runs in background"
 category: builtin
 tags: [timer, alarm, pomodoro, countdown, reminder]
 ---
 # Timer
 
-You can set timers and alarms that run in the background. Use the GoClaw scheduler (`cron_add`) for precise time-based alerts or bash `sleep` for quick countdowns.
+You can set timers and alarms that run in the background. Use the DevClaw scheduler (`cron_add`) for precise time-based alerts or bash `sleep` for quick countdowns.
 
 ## Quick timers (using sleep)
 

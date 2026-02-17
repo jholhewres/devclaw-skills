@@ -1,7 +1,7 @@
 ---
 name: airtable
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Airtable API — databases, records, and bases management"
 category: data
 tags: [airtable, database, spreadsheet, records, no-code]

@@ -1,7 +1,7 @@
 ---
 name: ocr
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "OCR — extract text from images and PDFs using various OCR engines"
 category: data
 tags: [ocr, text recognition, image to text, extraction]

@@ -1,7 +1,7 @@
 ---
 name: database
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Database operations — PostgreSQL, MySQL, MongoDB, Redis queries"
 category: data
 tags: [database, postgres, mysql, mongodb, redis, sql]

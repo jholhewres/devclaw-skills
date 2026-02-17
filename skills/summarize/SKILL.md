@@ -1,7 +1,7 @@
 ---
 name: summarize
 version: 0.2.0
-author: goclaw
+author: devclaw
 description: "Summarize URLs, articles, YouTube videos, podcasts, and files"
 category: data
 tags: [summarize, transcript, youtube, podcast, text-extraction]

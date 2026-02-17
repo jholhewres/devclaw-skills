@@ -1,7 +1,7 @@
 ---
 name: audio-tts
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Text-to-Speech and audio tools — convert text to speech, manipulate audio"
 category: media
 tags: [audio, tts, speech, voice, text-to-speech]
@@ -43,7 +43,7 @@ curl -s -X POST "https://api.elevenlabs.io/v1/text-to-speech/VOICE_ID" \
   -H "xi-api-key: $ELEVENLABS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "text": "Hello from goclaw!",
+    "text": "Hello from DevClaw!",
     "model_id": "eleven_monolingual_v1",
     "voice_settings": {"stability": 0.5, "similarity_boost": 0.5}
   }' -o output.mp3
@@ -76,7 +76,7 @@ curl -s -X POST "https://texttospeech.googleapis.com/v1/text:synthesize?key=$GOO
 aws polly synthesize-speech \
   --output-format mp3 \
   --voice-id Joanna \
-  --text "Hello from goclaw" \
+  --text "Hello from DevClaw" \
   output.mp3
 ```
 

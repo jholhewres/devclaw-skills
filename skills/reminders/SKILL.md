@@ -1,14 +1,14 @@
 ---
 name: reminders
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "Create, list, and manage reminders with date/time scheduling"
 category: builtin
 tags: [reminders, schedule, alerts, todo, due-dates]
 ---
 # Reminders
 
-You can create and manage time-based reminders for the user. Reminders are stored using the GoClaw scheduler and fire at the specified time.
+You can create and manage time-based reminders for the user. Reminders are stored using the DevClaw scheduler and fire at the specified time.
 
 ## Creating reminders
 

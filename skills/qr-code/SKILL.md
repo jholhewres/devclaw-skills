@@ -1,7 +1,7 @@
 ---
 name: qr-code
 version: 0.1.0
-author: goclaw
+author: devclaw
 description: "QR code generation and reading — create and decode QR codes"
 category: utilities
 tags: [qr, qr-code, barcode, generate]
