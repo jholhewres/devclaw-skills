@@ -25,6 +25,13 @@ skills:
     tags: [math, calculator, conversion]
     description: "Mathematical calculations and conversions"
 
+  media-config:
+    path: skills/media-config
+    version: 0.1.0
+    category: builtin
+    tags: [media, vision, audio, transcription, config, whisper, asr]
+    description: "Configure audio transcription and image/video understanding for channels"
+
   timer:
     path: skills/timer
     version: 0.1.0
