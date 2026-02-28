@@ -6,8 +6,8 @@
 #
 # Format: ClawdHub compatible (SKILL.md with YAML frontmatter).
 
-version: "4.0"
-updated: 2026-02-17
+version: "5.0"
+updated: 2026-02-28
 
 skills:
   # ──────────── Builtin (no API key required) ────────────
@@ -17,6 +17,7 @@ skills:
     category: builtin
     tags: [weather, forecast, temperature, wttr, open-meteo]
     description: "Weather information and forecasts (no API key)"
+    description_pt: "Informações e previsões do tempo (sem chave de API)"
 
   calculator:
     path: skills/calculator
@@ -24,6 +25,7 @@ skills:
     category: builtin
     tags: [math, calculator, conversion]
     description: "Mathematical calculations and conversions"
+    description_pt: "Cálculos matemáticos e conversões"
 
   media-config:
     path: skills/media-config
@@ -31,6 +33,7 @@ skills:
     category: builtin
     tags: [media, vision, audio, transcription, config, whisper, asr]
     description: "Configure audio transcription and image/video understanding for channels"
+    description_pt: "Configure transcrição de áudio e compreensão de imagem/vídeo para canais"
 
   timer:
     path: skills/timer
@@ -38,6 +41,7 @@ skills:
     category: builtin
     tags: [timer, alarm, pomodoro]
     description: "Timers, alarms, and Pomodoro sessions"
+    description_pt: "Temporizadores, alarmes e sessões Pomodoro"
 
   reminders:
     path: skills/reminders
@@ -45,6 +49,7 @@ skills:
     category: builtin
     tags: [reminders, schedule, alerts]
     description: "Time-based reminders with scheduling"
+    description_pt: "Lembretes com agendamento programado"
 
   notes:
     path: skills/notes
@@ -52,6 +57,7 @@ skills:
     category: builtin
     tags: [notes, memo, lists, ideas]
     description: "Quick notes, lists, and ideas stored locally"
+    description_pt: "Notas rápidas, listas e ideias armazenadas localmente"
 
   translate:
     path: skills/translate
@@ -59,6 +65,7 @@ skills:
     category: builtin
     tags: [translate, language, multilingual]
     description: "Translate text between languages"
+    description_pt: "Traduza textos entre idiomas"
 
   location:
     path: skills/location
@@ -66,6 +73,7 @@ skills:
     category: builtin
     tags: [geocoding, ip, timezone, maps, distance]
     description: "Geocoding, IP lookup, distance, timezone"
+    description_pt: "Geocodificação, consulta de IP, distância, fuso horário"
 
   qr-code:
     path: skills/qr-code
@@ -73,6 +81,7 @@ skills:
     category: builtin
     tags: [qr, qrcode, generate, decode]
     description: "Generate and decode QR codes"
+    description_pt: "Gere e decodifique QR codes"
 
   # ──────────── Data & Web ────────────
   web-search:
@@ -81,6 +90,7 @@ skills:
     category: data
     tags: [search, web, brave, duckduckgo]
     description: "Web search via Brave Search API or DuckDuckGo"
+    description_pt: "Busca na web via Brave Search API ou DuckDuckGo"
     requires:
       any_env: [BRAVE_API_KEY]
 
@@ -90,6 +100,7 @@ skills:
     category: data
     tags: [web, fetch, scrape, readability]
     description: "Fetch URL content and extract readable text"
+    description_pt: "Busque conteúdo de URLs e extraia texto legível"
 
   web-scraper:
     path: skills/web-scraper
@@ -97,6 +108,7 @@ skills:
     category: data
     tags: [scraping, crawl, extract, playwright]
     description: "Web scraping with CSS selectors, Playwright, curl"
+    description_pt: "Web scraping com seletores CSS, Playwright, curl"
 
   summarize:
     path: skills/summarize
@@ -104,6 +116,7 @@ skills:
     category: data
     tags: [summarize, transcript, youtube, podcast]
     description: "Summarize URLs, articles, videos, and podcasts"
+    description_pt: "Resuma URLs, artigos, vídeos e podcasts"
 
   ocr:
     path: skills/ocr
@@ -111,6 +124,7 @@ skills:
     category: data
     tags: [ocr, tesseract, text-extraction, pdf]
     description: "OCR text extraction from images and PDFs"
+    description_pt: "Extração de texto via OCR de imagens e PDFs"
     requires:
       any_bins: [tesseract]
 
@@ -120,6 +134,7 @@ skills:
     category: data
     tags: [stocks, finance, market, crypto, portfolio]
     description: "Stock prices, crypto, and market data"
+    description_pt: "Cotações de ações, criptomoedas e dados de mercado"
 
   # ──────────── Development ────────────
   github:
@@ -128,6 +143,7 @@ skills:
     category: development
     tags: [github, git, issues, pull-requests, ci]
     description: "Full GitHub integration via gh CLI"
+    description_pt: "Integração completa com GitHub via gh CLI"
     requires:
       bins: [gh]
 
@@ -137,6 +153,7 @@ skills:
     category: development
     tags: [jira, issues, sprints, agile, atlassian]
     description: "Jira — issues, sprints, transitions, worklogs"
+    description_pt: "Jira — issues, sprints, transições, registros de horas"
     requires:
       env: [JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN]
 
@@ -146,6 +163,7 @@ skills:
     category: development
     tags: [linear, issues, projects, agile]
     description: "Linear — issues, teams, projects"
+    description_pt: "Linear — issues, equipes, projetos"
     requires:
       env: [LINEAR_API_KEY]
 
@@ -155,6 +173,7 @@ skills:
     category: development
     tags: [postgresql, mysql, mongodb, redis, sqlite]
     description: "Database queries — PostgreSQL, MySQL, MongoDB, Redis, SQLite"
+    description_pt: "Consultas em banco de dados — PostgreSQL, MySQL, MongoDB, Redis, SQLite"
 
   docker:
     path: skills/docker
@@ -162,6 +181,7 @@ skills:
     category: development
     tags: [docker, containers, compose, images]
     description: "Docker containers, compose, volumes, networks"
+    description_pt: "Containers Docker, compose, volumes, redes"
     requires:
       bins: [docker]
 
@@ -171,6 +191,7 @@ skills:
     category: development
     tags: [docker, compose, multi-service, scaling, profiles]
     description: "Advanced Docker Compose — profiles, scaling, networking"
+    description_pt: "Docker Compose avançado — perfis, escalonamento, rede"
     requires:
       bins: [docker]
 
@@ -180,6 +201,7 @@ skills:
     category: development
     tags: [kubernetes, k8s, kubectl, pods, deployments, services]
     description: "Kubernetes cluster management via kubectl"
+    description_pt: "Gerenciamento de cluster Kubernetes via kubectl"
     requires:
       bins: [kubectl]
 
@@ -189,6 +211,7 @@ skills:
     category: development
     tags: [terraform, iac, infrastructure, cloud, hcl]
     description: "Infrastructure as Code with Terraform"
+    description_pt: "Infraestrutura como código com Terraform"
     requires:
       bins: [terraform]
 
@@ -198,6 +221,7 @@ skills:
     category: development
     tags: [aws, s3, ec2, lambda, cloudwatch, rds, ecs]
     description: "AWS CLI — S3, EC2, Lambda, CloudWatch, RDS, ECS"
+    description_pt: "AWS CLI — S3, EC2, Lambda, CloudWatch, RDS, ECS"
     requires:
       bins: [aws]
 
@@ -207,6 +231,7 @@ skills:
     category: development
     tags: [gcp, google-cloud, compute, cloud-run, gcs, bigquery]
     description: "Google Cloud CLI — Compute, Cloud Run, GCS, BigQuery"
+    description_pt: "Google Cloud CLI — Compute, Cloud Run, GCS, BigQuery"
     requires:
       bins: [gcloud]
 
@@ -216,6 +241,7 @@ skills:
     category: development
     tags: [azure, az, vms, app-service, blob, sql]
     description: "Azure CLI — VMs, App Service, Blob Storage, SQL"
+    description_pt: "Azure CLI — VMs, App Service, Blob Storage, SQL"
     requires:
       bins: [az]
 
@@ -225,6 +251,7 @@ skills:
     category: development
     tags: [rust, cargo, build, test, clippy, publish]
     description: "Rust development with Cargo"
+    description_pt: "Desenvolvimento Rust com Cargo"
     requires:
       bins: [cargo]
 
@@ -234,6 +261,7 @@ skills:
     category: development
     tags: [python, pip, poetry, pipenv, venv]
     description: "Python package management — pip, poetry, pipenv"
+    description_pt: "Gerenciamento de pacotes Python — pip, poetry, pipenv"
     requires:
       bins: [python3]
 
@@ -243,6 +271,7 @@ skills:
     category: development
     tags: [tmux, terminal, multiplexer, sessions]
     description: "Terminal multiplexing with tmux"
+    description_pt: "Multiplexação de terminal com tmux"
     requires:
       bins: [tmux]
 
@@ -252,6 +281,7 @@ skills:
     category: development
     tags: [claude, ai, coding, assistant, anthropic]
     description: "Advanced coding via Claude Code CLI"
+    description_pt: "Programação avançada via Claude Code CLI"
     requires:
       bins: [claude]
 
@@ -261,6 +291,7 @@ skills:
     category: development
     tags: [image, generation, dall-e, gpt-image, ai]
     description: "Generate images from text descriptions"
+    description_pt: "Gere imagens a partir de descrições em texto"
 
   project-manager:
     path: skills/project-manager
@@ -268,6 +299,7 @@ skills:
     category: development
     tags: [projects, workspace, detection, languages]
     description: "Register and manage development projects"
+    description_pt: "Registre e gerencie projetos de desenvolvimento"
 
   filesystem:
     path: skills/filesystem
@@ -275,6 +307,7 @@ skills:
     category: development
     tags: [files, search, rsync, disk, permissions]
     description: "Advanced filesystem operations, search, sync"
+    description_pt: "Operações avançadas de sistema de arquivos, busca, sincronização"
 
   browser-automation:
     path: skills/browser-automation
@@ -282,6 +315,7 @@ skills:
     category: development
     tags: [browser, playwright, puppeteer, automation, e2e]
     description: "Browser automation with Playwright/Puppeteer"
+    description_pt: "Automação de navegador com Playwright/Puppeteer"
 
   # ──────────── Quality & Analysis ────────────
   lighthouse:
@@ -290,6 +324,7 @@ skills:
     category: development
     tags: [lighthouse, performance, a11y, seo, web-vitals]
     description: "Web performance audit with Google Lighthouse"
+    description_pt: "Auditoria de performance web com Google Lighthouse"
     requires:
       bins: [npx]
 
@@ -299,6 +334,7 @@ skills:
     category: development
     tags: [security, audit, vulnerabilities, npm-audit, govulncheck]
     description: "Security audit for dependencies across languages"
+    description_pt: "Auditoria de segurança de dependências em diversas linguagens"
 
   a11y-axe:
     path: skills/a11y-axe
@@ -306,6 +342,7 @@ skills:
     category: development
     tags: [accessibility, axe-core, wcag, a11y, audit]
     description: "Accessibility audit with axe-core"
+    description_pt: "Auditoria de acessibilidade com axe-core"
     requires:
       bins: [npx]
 
@@ -315,6 +352,7 @@ skills:
     category: development
     tags: [bundle, webpack, vite, size, performance]
     description: "Analyze JS bundle size (Vite/Webpack)"
+    description_pt: "Analise o tamanho do bundle JS (Vite/Webpack)"
 
   color-contrast:
     path: skills/color-contrast
@@ -322,6 +360,7 @@ skills:
     category: development
     tags: [color, contrast, wcag, accessibility, design]
     description: "Calculate WCAG color contrast ratios"
+    description_pt: "Calcule proporções de contraste de cores WCAG"
 
   dora-metrics:
     path: skills/dora-metrics
@@ -329,6 +368,7 @@ skills:
     category: development
     tags: [dora, metrics, deployment, lead-time, mttr]
     description: "Calculate DORA engineering metrics from git"
+    description_pt: "Calcule métricas DORA de engenharia a partir do git"
 
   changelog-gen:
     path: skills/changelog-gen
@@ -336,6 +376,7 @@ skills:
     category: development
     tags: [changelog, conventional-commits, release, git]
     description: "Generate CHANGELOG.md from conventional commits"
+    description_pt: "Gere CHANGELOG.md a partir de commits convencionais"
 
   release-notes:
     path: skills/release-notes
@@ -343,6 +384,7 @@ skills:
     category: development
     tags: [release, notes, github, issues, prs]
     description: "Generate release notes from issues + commits"
+    description_pt: "Gere notas de release a partir de issues + commits"
 
   # ──────────── DevOps & Infrastructure ────────────
   nginx:
@@ -351,6 +393,7 @@ skills:
     category: infra
     tags: [nginx, webserver, proxy, ssl, reverse-proxy]
     description: "Nginx configuration, reverse proxy, and SSL"
+    description_pt: "Configuração Nginx, proxy reverso e SSL"
     requires:
       bins: [nginx]
 
@@ -360,6 +403,7 @@ skills:
     category: infra
     tags: [redis, cache, database, keys, pub-sub]
     description: "Redis CLI for cache, queues, and in-memory data"
+    description_pt: "Redis CLI para cache, filas e dados em memória"
     requires:
       bins: [redis-cli]
 
@@ -369,6 +413,7 @@ skills:
     category: infra
     tags: [systemd, systemctl, journalctl, linux, services]
     description: "Manage Linux services with systemctl and journalctl"
+    description_pt: "Gerencie serviços Linux com systemctl e journalctl"
 
   pm2:
     path: skills/pm2
@@ -376,6 +421,7 @@ skills:
     category: infra
     tags: [pm2, process, manager, nodejs, daemon]
     description: "Process management with PM2"
+    description_pt: "Gerenciamento de processos com PM2"
     requires:
       bins: [pm2]
 
@@ -385,6 +431,7 @@ skills:
     category: infra
     tags: [railway, deploy, hosting, databases]
     description: "Railway deploy — projects, services, databases"
+    description_pt: "Deploy no Railway — projetos, serviços, bancos de dados"
     requires:
       bins: [railway]
 
@@ -394,6 +441,7 @@ skills:
     category: infra
     tags: [backup, rsync, tar, database-dump, cron]
     description: "Backup scripts — rsync, tar, database dumps"
+    description_pt: "Scripts de backup — rsync, tar, dumps de banco de dados"
 
   health:
     path: skills/health
@@ -401,6 +449,7 @@ skills:
     category: infra
     tags: [monitoring, healthcheck, uptime, ssl, alerting]
     description: "Service health checks, uptime monitoring, SSL"
+    description_pt: "Verificação de saúde de serviços, monitoramento de uptime, SSL"
 
   # ──────────── Communication ────────────
   slack:
@@ -409,6 +458,7 @@ skills:
     category: communication
     tags: [slack, messaging, channels, threads]
     description: "Slack — messages, channels, threads, reactions"
+    description_pt: "Slack — mensagens, canais, threads, reações"
     requires:
       env: [SLACK_BOT_TOKEN]
 
@@ -418,6 +468,7 @@ skills:
     category: communication
     tags: [discord, webhooks, bot, embeds]
     description: "Discord webhooks and bot API"
+    description_pt: "Discord webhooks e API de bot"
 
   telegram:
     path: skills/telegram
@@ -425,6 +476,7 @@ skills:
     category: communication
     tags: [telegram, bot, messaging, files]
     description: "Telegram Bot API — messages, files, interactive"
+    description_pt: "API do Telegram Bot — mensagens, arquivos, interativo"
     requires:
       env: [TELEGRAM_BOT_TOKEN]
 
@@ -434,6 +486,7 @@ skills:
     category: communication
     tags: [email, resend, sendgrid, mailgun, smtp]
     description: "Send emails via Resend, SendGrid, Mailgun, SMTP"
+    description_pt: "Envie e-mails via Resend, SendGrid, Mailgun, SMTP"
     requires:
       any_env: [RESEND_API_KEY, SENDGRID_API_KEY, MAILGUN_API_KEY]
 
@@ -443,6 +496,7 @@ skills:
     category: communication
     tags: [gmail, email, google, inbox]
     description: "Gmail — list, read, send, labels"
+    description_pt: "Gmail — listar, ler, enviar, gerenciar marcadores"
 
   # ──────────── Productivity ────────────
   obsidian:
@@ -451,6 +505,7 @@ skills:
     category: productivity
     tags: [obsidian, vault, notes, wikilinks, tags, daily-notes, zettelkasten]
     description: "Manage Obsidian vaults — notes, links, tags, daily notes"
+    description_pt: "Gerencie cofres Obsidian — notas, links, tags, notas diárias"
 
   journal:
     path: skills/journal
@@ -458,6 +513,7 @@ skills:
     category: productivity
     tags: [journal, diary, reflection, daily, writing]
     description: "Daily journaling with structured entries and reflections"
+    description_pt: "Diário pessoal com entradas estruturadas e reflexões"
 
   pomodoro:
     path: skills/pomodoro
@@ -465,6 +521,7 @@ skills:
     category: productivity
     tags: [pomodoro, focus, productivity, timer, sessions]
     description: "Pomodoro technique — focus sessions, breaks, tracking"
+    description_pt: "Técnica Pomodoro — sessões de foco, pausas, acompanhamento"
 
   time-tracker:
     path: skills/time-tracker
@@ -472,6 +529,7 @@ skills:
     category: productivity
     tags: [time, tracker, hours, projects, tasks, reporting]
     description: "Track time spent on tasks and projects"
+    description_pt: "Acompanhe o tempo gasto em tarefas e projetos"
 
   habits:
     path: skills/habits
@@ -479,6 +537,7 @@ skills:
     category: productivity
     tags: [habits, streaks, daily, tracking, routine]
     description: "Track daily habits and streaks"
+    description_pt: "Acompanhe hábitos diários e sequências"
 
   meeting-notes:
     path: skills/meeting-notes
@@ -486,6 +545,7 @@ skills:
     category: productivity
     tags: [meetings, notes, action-items, standup, retro]
     description: "Structured meeting notes with action items extraction"
+    description_pt: "Notas de reunião estruturadas com extração de ações"
 
   bookmarks:
     path: skills/bookmarks
@@ -493,6 +553,7 @@ skills:
     category: productivity
     tags: [bookmarks, links, references, save, organize]
     description: "Save, organize, and search bookmarks and references"
+    description_pt: "Salve, organize e busque favoritos e referências"
 
   standup-summary:
     path: skills/standup-summary
@@ -500,6 +561,7 @@ skills:
     category: productivity
     tags: [standup, daily, summary, git, agile]
     description: "Generate daily standup summary from git + issues"
+    description_pt: "Gere resumo de daily standup a partir de git + issues"
 
   sprint-report:
     path: skills/sprint-report
@@ -507,6 +569,7 @@ skills:
     category: productivity
     tags: [sprint, report, velocity, agile, scrum]
     description: "Generate sprint reports from git + issue tracker"
+    description_pt: "Gere relatórios de sprint a partir de git + issue tracker"
 
   calendar:
     path: skills/calendar
@@ -514,6 +577,7 @@ skills:
     category: productivity
     tags: [google, calendar, events, meetings]
     description: "Google Calendar via gcalcli or gog"
+    description_pt: "Google Calendar via gcalcli ou gog"
     requires:
       any_bins: [gcalcli, gog]
 
@@ -523,6 +587,7 @@ skills:
     category: productivity
     tags: [google, gmail, calendar, drive, workspace]
     description: "Google Workspace (Gmail, Calendar, Drive) via gog"
+    description_pt: "Google Workspace (Gmail, Calendar, Drive) via gog"
     requires:
       bins: [gog]
 
@@ -532,6 +597,7 @@ skills:
     category: productivity
     tags: [notion, wiki, database, project-management]
     description: "Notion API — pages, databases, blocks"
+    description_pt: "API do Notion — páginas, bancos de dados, blocos"
     requires:
       env: [NOTION_API_KEY]
 
@@ -541,6 +607,7 @@ skills:
     category: productivity
     tags: [trello, kanban, boards, tasks]
     description: "Trello boards, lists, and cards"
+    description_pt: "Quadros, listas e cartões do Trello"
     requires:
       env: [TRELLO_API_KEY, TRELLO_TOKEN]
 
@@ -550,6 +617,7 @@ skills:
     category: productivity
     tags: [todoist, tasks, todo]
     description: "Todoist task management"
+    description_pt: "Gerenciamento de tarefas com Todoist"
     requires:
       env: [TODOIST_API_TOKEN]
 
@@ -559,6 +627,7 @@ skills:
     category: productivity
     tags: [asana, tasks, projects, workspaces]
     description: "Asana — tasks, projects, workspaces, search"
+    description_pt: "Asana — tarefas, projetos, workspaces, busca"
     requires:
       env: [ASANA_ACCESS_TOKEN]
 
@@ -568,6 +637,7 @@ skills:
     category: productivity
     tags: [clickup, tasks, time-tracking, workspaces]
     description: "ClickUp — tasks, comments, time tracking"
+    description_pt: "ClickUp — tarefas, comentários, controle de tempo"
     requires:
       env: [CLICKUP_API_TOKEN]
 
@@ -577,8 +647,30 @@ skills:
     category: productivity
     tags: [airtable, database, spreadsheet, records]
     description: "Airtable — records, tables, batch operations"
+    description_pt: "Airtable — registros, tabelas, operações em lote"
     requires:
       env: [AIRTABLE_API_KEY]
+
+  # ──────────── Integrations (E-commerce & CRM) ────────────
+  shopify:
+    path: skills/shopify
+    version: 0.1.0
+    category: integrations
+    tags: [shopify, ecommerce, orders, products, customers, inventory]
+    description: "Manage Shopify store — products, orders, customers, inventory"
+    description_pt: "Gerencie loja Shopify — produtos, pedidos, clientes, estoque"
+    requires:
+      env: [SHOPIFY_STORE, SHOPIFY_ACCESS_TOKEN]
+
+  hubspot:
+    path: skills/hubspot
+    version: 0.1.0
+    category: integrations
+    tags: [hubspot, crm, contacts, deals, companies, marketing, sales]
+    description: "Manage HubSpot CRM — contacts, companies, deals, tickets"
+    description_pt: "Gerencie HubSpot CRM — contatos, empresas, negócios, tickets"
+    requires:
+      env: [HUBSPOT_ACCESS_TOKEN]
 
   # ──────────── Finance & Payments ────────────
   payments:
@@ -587,6 +679,7 @@ skills:
     category: finance
     tags: [stripe, paypal, payments, invoices]
     description: "Payments via Stripe, PayPal, Lightning Network"
+    description_pt: "Pagamentos via Stripe, PayPal, Lightning Network"
     requires:
       any_env: [STRIPE_SECRET_KEY, PAYPAL_CLIENT_ID]
 
@@ -596,6 +689,7 @@ skills:
     category: finance
     tags: [bitcoin, ethereum, crypto, wallet, portfolio]
     description: "Crypto wallets, balances, and market data"
+    description_pt: "Carteiras de cripto, saldos e dados de mercado"
 
   # ──────────── Media & Files ────────────
   ffmpeg:
@@ -604,6 +698,7 @@ skills:
     category: media
     tags: [ffmpeg, video, audio, convert, transcode, trim]
     description: "Video and audio processing with ffmpeg"
+    description_pt: "Processamento de vídeo e áudio com ffmpeg"
     requires:
       bins: [ffmpeg]
 
@@ -613,6 +708,7 @@ skills:
     category: media
     tags: [imagemagick, image, resize, convert, magick]
     description: "Image processing with ImageMagick"
+    description_pt: "Processamento de imagens com ImageMagick"
     requires:
       any_bins: [magick, convert]
 
@@ -622,6 +718,7 @@ skills:
     category: media
     tags: [pandoc, document, conversion, pdf, markdown, docx]
     description: "Document format conversion with Pandoc"
+    description_pt: "Conversão de formatos de documentos com Pandoc"
     requires:
       bins: [pandoc]
 
@@ -631,6 +728,7 @@ skills:
     category: media
     tags: [image, resize, convert, compress, watermark]
     description: "Image processing — resize, convert, compress, watermark"
+    description_pt: "Processamento de imagens — redimensionar, converter, comprimir, marca d'água"
 
   video-tools:
     path: skills/video-tools
@@ -638,6 +736,7 @@ skills:
     category: media
     tags: [video, ffmpeg, convert, compress, trim]
     description: "Video processing via ffmpeg"
+    description_pt: "Processamento de vídeo via ffmpeg"
     requires:
       bins: [ffmpeg]
 
@@ -647,6 +746,7 @@ skills:
     category: media
     tags: [tts, audio, speech, openai, elevenlabs]
     description: "Text-to-speech — OpenAI, ElevenLabs, Google, Whisper"
+    description_pt: "Texto para fala — OpenAI, ElevenLabs, Google, Whisper"
 
   pdf-tools:
     path: skills/pdf-tools
@@ -654,6 +754,7 @@ skills:
     category: media
     tags: [pdf, merge, split, compress, extract]
     description: "PDF tools — merge, split, compress, extract, watermark"
+    description_pt: "Ferramentas PDF — mesclar, dividir, comprimir, extrair, marca d'água"
 
   screenshot:
     path: skills/screenshot
@@ -661,3 +762,87 @@ skills:
     category: media
     tags: [screenshot, capture, puppeteer, playwright]
     description: "Web page screenshots via API or headless browsers"
+    description_pt: "Capturas de tela de páginas web via API ou navegadores headless"
+
+  # ──────────── Google Workspace (API) ────────────
+  # Native API integration via google_api tool (no external CLI required)
+
+  google-gmail:
+    path: skills/google-gmail
+    version: 1.0.0
+    category: api
+    tags: [google, gmail, email, workspace, api]
+    description: "Gmail API — read, search, manage emails via google_api tool"
+    description_pt: "API do Gmail — leia, busque, gerencie e-mails via google_api"
+    requires:
+      auth_profile: google
+
+  google-calendar:
+    path: skills/google-calendar
+    version: 1.0.0
+    category: api
+    tags: [google, calendar, events, workspace, api]
+    description: "Google Calendar API — manage events and calendars via google_api tool"
+    description_pt: "API do Google Calendar — gerencie eventos e calendários via google_api"
+    requires:
+      auth_profile: google
+
+  google-drive:
+    path: skills/google-drive
+    version: 1.0.0
+    category: api
+    tags: [google, drive, files, storage, workspace, api]
+    description: "Google Drive API — manage files and folders via google_api tool"
+    description_pt: "API do Google Drive — gerencie arquivos e pastas via google_api"
+    requires:
+      auth_profile: google
+
+  google-sheets:
+    path: skills/google-sheets
+    version: 1.0.0
+    category: api
+    tags: [google, sheets, spreadsheet, workspace, api]
+    description: "Google Sheets API — read and write spreadsheet data via google_api tool"
+    description_pt: "API do Google Sheets — leia e escreva dados em planilhas via google_api"
+    requires:
+      auth_profile: google
+
+  google-docs:
+    path: skills/google-docs
+    version: 1.0.0
+    category: api
+    tags: [google, docs, document, workspace, api]
+    description: "Google Docs API — create and edit documents via google_api tool"
+    description_pt: "API do Google Docs — crie e edite documentos via google_api"
+    requires:
+      auth_profile: google
+
+  google-slides:
+    path: skills/google-slides
+    version: 1.0.0
+    category: api
+    tags: [google, slides, presentation, workspace, api]
+    description: "Google Slides API — create and edit presentations via google_api tool"
+    description_pt: "API do Google Slides — crie e edite apresentações via google_api"
+    requires:
+      auth_profile: google
+
+  google-contacts:
+    path: skills/google-contacts
+    version: 1.0.0
+    category: api
+    tags: [google, contacts, people, workspace, api]
+    description: "Google Contacts API — manage contacts via google_api tool"
+    description_pt: "API do Google Contacts — gerencie contatos via google_api"
+    requires:
+      auth_profile: google
+
+  google-tasks:
+    path: skills/google-tasks
+    version: 1.0.0
+    category: api
+    tags: [google, tasks, todo, workspace, api]
+    description: "Google Tasks API — manage task lists via google_api tool"
+    description_pt: "API do Google Tasks — gerencie listas de tarefas via google_api"
+    requires:
+      auth_profile: google
