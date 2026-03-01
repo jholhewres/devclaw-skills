@@ -764,85 +764,14 @@ skills:
     description: "Web page screenshots via API or headless browsers"
     description_pt: "Capturas de tela de páginas web via API ou navegadores headless"
 
-  # ──────────── Google Workspace (API) ────────────
-  # Native API integration via google_api tool (no external CLI required)
-
-  google-gmail:
-    path: skills/google-gmail
-    version: 1.0.0
-    category: api
-    tags: [google, gmail, email, workspace, api]
-    description: "Gmail API — read, search, manage emails via google_api tool"
-    description_pt: "API do Gmail — leia, busque, gerencie e-mails via google_api"
-    requires:
-      auth_profile: google
+  # ──────────── Google Calendar ────────────
 
   google-calendar:
     path: skills/google-calendar
-    version: 1.0.0
-    category: api
-    tags: [google, calendar, events, workspace, api]
-    description: "Google Calendar API — manage events and calendars via google_api tool"
-    description_pt: "API do Google Calendar — gerencie eventos e calendários via google_api"
+    version: 0.1.0
+    category: productivity
+    tags: [google, calendar, scheduling, events, meetings, gcal]
+    description: "Google Calendar — list, create, and manage events via gcal CLI"
+    description_pt: "Google Calendar — liste, crie e gerencie eventos via gcal CLI"
     requires:
-      auth_profile: google
-
-  google-drive:
-    path: skills/google-drive
-    version: 1.0.0
-    category: api
-    tags: [google, drive, files, storage, workspace, api]
-    description: "Google Drive API — manage files and folders via google_api tool"
-    description_pt: "API do Google Drive — gerencie arquivos e pastas via google_api"
-    requires:
-      auth_profile: google
-
-  google-sheets:
-    path: skills/google-sheets
-    version: 1.0.0
-    category: api
-    tags: [google, sheets, spreadsheet, workspace, api]
-    description: "Google Sheets API — read and write spreadsheet data via google_api tool"
-    description_pt: "API do Google Sheets — leia e escreva dados em planilhas via google_api"
-    requires:
-      auth_profile: google
-
-  google-docs:
-    path: skills/google-docs
-    version: 1.0.0
-    category: api
-    tags: [google, docs, document, workspace, api]
-    description: "Google Docs API — create and edit documents via google_api tool"
-    description_pt: "API do Google Docs — crie e edite documentos via google_api"
-    requires:
-      auth_profile: google
-
-  google-slides:
-    path: skills/google-slides
-    version: 1.0.0
-    category: api
-    tags: [google, slides, presentation, workspace, api]
-    description: "Google Slides API — create and edit presentations via google_api tool"
-    description_pt: "API do Google Slides — crie e edite apresentações via google_api"
-    requires:
-      auth_profile: google
-
-  google-contacts:
-    path: skills/google-contacts
-    version: 1.0.0
-    category: api
-    tags: [google, contacts, people, workspace, api]
-    description: "Google Contacts API — manage contacts via google_api tool"
-    description_pt: "API do Google Contacts — gerencie contatos via google_api"
-    requires:
-      auth_profile: google
-
-  google-tasks:
-    path: skills/google-tasks
-    version: 1.0.0
-    category: api
-    tags: [google, tasks, todo, workspace, api]
-    description: "Google Tasks API — manage task lists via google_api tool"
-    description_pt: "API do Google Tasks — gerencie listas de tarefas via google_api"
-    requires:
-      auth_profile: google
+      any_bins: [gcal, gcalcli]
