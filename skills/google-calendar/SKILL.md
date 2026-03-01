@@ -1,248 +1,137 @@
 ---
 name: google-calendar
-description: Access Google Calendar via Google API using the google_api tool
-homepage: https://developers.google.com/calendar/api/v3/reference
-metadata:
-  openclaw:
-    requires:
-      auth_profile: google
-    emoji: "📅"
+version: 0.1.0
+author: devclaw
+description: "Google Calendar — list, create, and manage events via gcal CLI"
+category: productivity
+tags: [google, calendar, scheduling, events, meetings, gcal]
+requires:
+  any_bins: [gcal, gcalcli]
 ---
-
 # Google Calendar
 
-Manage calendars and events using the `google_api` tool with Google Calendar API endpoints.
+Manage Google Calendar events from the command line using `gcal` (Node.js) or `gcalcli` (Python).
 
-## Prerequisites
+## Setup (gcal — recommended)
 
-You need to configure an OAuth profile first:
+### 1. Install
 
 ```bash
-auth_profile_add(
-  provider="google-calendar",
-  name="default",
-  mode="oauth"
-)
+sudo npm install -g gcal
 ```
 
-Or use a generic Google profile:
+### 2. Create Google OAuth credentials
+
+1. Go to https://console.cloud.google.com/apis/credentials
+2. Create a project (or select existing)
+3. Enable **Google Calendar API**: https://console.cloud.google.com/apis/library/calendar-json.googleapis.com
+4. Go to **Credentials** → **Create Credentials** → **OAuth client ID**
+5. Application type: **Desktop app** (or "Other")
+6. Download the JSON file
+7. Save as `~/.client_secret.json`
+
+### 3. Authorize (one-time)
 
 ```bash
-auth_profile_add(
-  provider="google",
-  name="personal",
-  mode="oauth"
-)
+# Generate authorization URL
+gcal generateUrl
+
+# Open the URL in your browser, authorize, and copy the code
+gcal storeToken CODE_FROM_BROWSER
 ```
 
-## Common Operations
+The token is saved at `~/calendar_api_token.json` with auto-refresh.
 
-### List Calendars
+## Usage
+
+### List events
 
 ```bash
-google_api(
-  service="calendar",
-  endpoint="/users/me/calendarList",
-  method="GET"
-)
+# Today's events
+gcal list
+
+# Tomorrow
+gcal list tomorrow
+
+# Date range (natural language)
+gcal list 'from Monday to Friday'
+gcal list 'from 03/01/2026 to 03/07/2026'
+
+# Specific dates
+gcal list -f 2026-02-14 -t 2026-02-21
 ```
 
-### List Events (Primary Calendar)
+### Create events
 
 ```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events",
-  method="GET",
-  params={
-    "timeMin": "2024-01-01T00:00:00Z",
-    "timeMax": "2024-01-31T23:59:59Z",
-    "maxResults": "10"
+# Natural language (preferred)
+gcal insert 'Meeting with João tomorrow from 3pm to 4pm'
+gcal insert 'Lunch on Friday at noon for 1 hour'
+gcal insert 'Dentist appointment March 5 at 10am'
+
+# Explicit parameters
+gcal insert -s 'Team standup' -d 2026-02-15 -t 09:00 -D 30m
+gcal insert -s 'Workshop' -d 2026-02-20 -t 14:00 -D 2h
+```
+
+### Bulk insert (from JSON)
+
+```bash
+cat > /tmp/events.json << 'EOF'
+[{
+  "calendarId": "primary",
+  "resource": {
+    "summary": "Sprint planning",
+    "start": { "dateTime": "2026-02-17T10:00:00" },
+    "end": { "dateTime": "2026-02-17T11:00:00" }
   }
-)
-```
-
-### List Events (Specific Calendar)
-
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/CALENDAR_ID/events",
-  method="GET",
-  params={
-    "timeMin": "2024-01-01T00:00:00Z",
-    "maxResults": "20"
+}, {
+  "calendarId": "primary",
+  "resource": {
+    "summary": "Retrospective",
+    "start": { "dateTime": "2026-02-17T14:00:00" },
+    "end": { "dateTime": "2026-02-17T15:00:00" }
   }
-)
+}]
+EOF
+gcal bulk -e /tmp/events.json
 ```
 
-### Search Events
+## Alternative: gcalcli (Python)
+
+### Install
 
 ```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events",
-  method="GET",
-  params={
-    "q": "meeting",
-    "timeMin": "2024-01-01T00:00:00Z"
-  }
-)
+pip install gcalcli
 ```
 
-### Get Event Details
+### Usage
 
 ```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events/EVENT_ID",
-  method="GET"
-)
+# List events
+gcalcli agenda
+gcalcli agenda --nostarted "2026-02-14" "2026-02-21"
+
+# Create event
+gcalcli quick "Meeting with team tomorrow 3pm 1hr"
+gcalcli add --title "Meeting" --where "Room 1" --when "tomorrow 3pm" --duration 60
+
+# Calendar view
+gcalcli calw 2
 ```
 
-### Create Event (Timed)
+## Tips
 
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events",
-  method="POST",
-  body={
-    "summary": "Team Meeting",
-    "description": "Weekly sync with the engineering team",
-    "location": "Conference Room A",
-    "start": {
-      "dateTime": "2024-01-15T14:00:00",
-      "timeZone": "America/New_York"
-    },
-    "end": {
-      "dateTime": "2024-01-15T15:00:00",
-      "timeZone": "America/New_York"
-    },
-    "attendees": [
-      {"email": "colleague@company.com"},
-      {"email": "manager@company.com"}
-    ]
-  }
-)
-```
+- Always confirm with the user before creating or deleting events.
+- Parse natural language dates (e.g., "tomorrow", "next Monday", "in 2 hours"; Portuguese: "amanhã", "próxima segunda", "daqui a 2 horas").
+- Use the user's timezone (from config or system).
+- For recurring events, mention the recurrence pattern to the user.
+- When listing events, show: title, date/time, duration, location.
+- `gcal insert` with natural language is the fastest way to create events.
+- Token auto-refreshes — no need to re-authorize after initial setup.
 
-### Create All-Day Event
+## Triggers
 
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events",
-  method="POST",
-  body={
-    "summary": "Vacation",
-    "start": {
-      "date": "2024-01-15"
-    },
-    "end": {
-      "date": "2024-01-16"
-    }
-  }
-)
-```
-
-### Update Event
-
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events/EVENT_ID",
-  method="PUT",
-  body={
-    "summary": "Updated Meeting Title",
-    "description": "Updated description",
-    "start": {
-      "dateTime": "2024-01-15T15:00:00",
-      "timeZone": "America/New_York"
-    },
-    "end": {
-      "dateTime": "2024-01-15T16:00:00",
-      "timeZone": "America/New_York"
-    }
-  }
-)
-```
-
-### Partial Update (Patch)
-
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events/EVENT_ID",
-  method="PATCH",
-  body={
-    "summary": "New Title Only"
-  }
-)
-```
-
-### Delete Event
-
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events/EVENT_ID",
-  method="DELETE"
-)
-```
-
-## Using Specific Profiles
-
-If you have multiple Google accounts configured:
-
-```bash
-google_api(
-  service="calendar",
-  endpoint="/calendars/primary/events",
-  method="GET",
-  profile="work"
-)
-```
-
-## Date/Time Formats
-
-### RFC3339 Format (for timeMin/timeMax params)
-
-- `2024-01-15T00:00:00Z` - UTC time
-- `2024-01-15T14:30:00-05:00` - With timezone offset
-
-### Date Format (for all-day events)
-
-- `2024-01-15` - Just the date
-
-### Common Time Zones
-
-- `America/New_York` - Eastern Time
-- `America/Chicago` - Central Time
-- `America/Denver` - Mountain Time
-- `America/Los_Angeles` - Pacific Time
-- `Europe/London` - GMT/BST
-- `Europe/Paris` - Central European Time
-- `Asia/Tokyo` - Japan Time
-- `UTC` - UTC
-
-## Query Parameters
-
-- `timeMin` - Start of time range (RFC3339)
-- `timeMax` - End of time range (RFC3339)
-- `q` - Free text search
-- `maxResults` - Maximum number of events (1-2500)
-- `orderBy` - Sort order: "startTime" or "updated"
-- `singleEvents` - "true" to expand recurring events
-- `showDeleted` - "true" to include deleted/cancelled events
-
-## Error Handling
-
-If you see "No valid OAuth profile found":
-1. Check configured profiles: `auth_profile_list()`
-2. Add a profile: `auth_profile_add(provider="google-calendar", name="default", mode="oauth")`
-3. Complete the OAuth flow in the WebUI
-
-## API Reference
-
-Full API documentation: https://developers.google.com/calendar/api/v3/reference
+calendar, what's on my calendar, schedule a meeting, create an event,
+check my schedule, free time, available, minha agenda, agendar,
+marcar reunião, calendário, próximos compromissos, google calendar
